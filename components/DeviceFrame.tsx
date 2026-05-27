@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useDevice } from "./DeviceContext";
 import { cn } from "@/lib/utils";
 
@@ -32,6 +32,29 @@ const deviceStyles = {
 export function DeviceFrame({ children }: { children: ReactNode }) {
   const { device } = useDevice();
   const currentStyle = deviceStyles[device];
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const updateScale = () => {
+      if (typeof window === "undefined") return;
+      
+      // Available width: screen width minus padding
+      const maxWidth = window.innerWidth - 32;
+      
+      // Available height: screen height minus header/hero space (~220px)
+      const maxHeight = window.innerHeight - 220;
+      
+      const scaleX = maxWidth / currentStyle.width;
+      const scaleY = maxHeight / currentStyle.height;
+      
+      // Scale down to fit the most constrained dimension
+      setScale(Math.min(1, scaleX, scaleY));
+    };
+
+    updateScale();
+    window.addEventListener("resize", updateScale);
+    return () => window.removeEventListener("resize", updateScale);
+  }, [currentStyle.width, currentStyle.height]);
 
   return (
     <div className="flex flex-col items-center justify-center w-full max-w-full perspective-1000 relative">
@@ -42,6 +65,7 @@ export function DeviceFrame({ children }: { children: ReactNode }) {
           width: currentStyle.width,
           height: currentStyle.height,
           borderRadius: currentStyle.borderRadius,
+          scale: scale,
         }}
         transition={{
           type: "spring",

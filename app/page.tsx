@@ -12,7 +12,7 @@ function LandingContent() {
   const { device, setDevice } = useDevice();
 
   return (
-    <main className="h-[100dvh] w-screen relative overflow-hidden flex flex-col items-center justify-center">
+    <main className="h-[100dvh] w-full relative overflow-hidden flex flex-col items-center justify-center">
       {/* Absolute Top Bar */}
       <div className="absolute top-0 left-0 w-full p-4 md:p-6 flex items-start justify-between z-50 pointer-events-none">
         <div className="pointer-events-auto">
