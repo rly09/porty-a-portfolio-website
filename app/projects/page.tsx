@@ -9,24 +9,31 @@ import { Footer } from "@/components/Footer";
 const projects = [
   {
     id: 1,
-    title: "AI Code Assistant",
-    description: "A context-aware intelligent programming assistant that helps developers write better code faster.",
-    tags: ["Next.js", "TypeScript", "LLMs", "Tailwind CSS"],
-    year: "2024",
+    title: "Bolo AI – AI Powered Voice Assistant & Device Automation Platform",
+    description: "Built a cross-platform voice assistant for Android using Flutter and Supabase, automating hands-free device actions (calls, alarms, WhatsApp messaging, media playback).",
+    tags: ["Flutter", "Supabase", "HiveDb", "LLMs", "Gemini API"],
+    year: "2026",
   },
   {
     id: 2,
-    title: "NeuroFinance App",
-    description: "A personal finance tracker powered by machine learning for predictive budget forecasting.",
-    tags: ["React Native", "Python", "FastAPI", "TensorFlow"],
-    year: "2023",
+    title: "CaseLens – AI Powered Legal Intelligence Platform",
+    description: "A legal intelligence platform that uses AI to analyze and predict legal outcomes.",
+    tags: ["Flutter", "FastAPI", "Linear Regression", "FAISS"],
+    year: "2026",
   },
   {
     id: 3,
-    title: "Minimal OS Framework",
-    description: "A web-based window management system mirroring desktop operating systems in the browser.",
-    tags: ["React", "Framer Motion", "Zustand"],
-    year: "2023",
+    title: "Career Verse",
+    description: "A full-stack Flutter app that provides personalized career paths by analyzing quiz responses and strengths using AI-powered recommendations.",
+    tags: ["Flutter", "Supabase"],
+    year: "2025",
+  },
+  {
+    id: 4,
+    title: "SyncMind",
+    description: "Built a Chrome extension that transfers conversations between Claude, ChatGPT, Gemini, and Perplexity with one click.",
+    tags: ["Chrome Extension", "React", "Tailwind CSS", "Plasmo Framework"],
+    year: "2026",
   }
 ];
 

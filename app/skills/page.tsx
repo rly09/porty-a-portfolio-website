@@ -8,29 +8,38 @@ import { Footer } from "@/components/Footer";
 
 const skillCategories = [
   {
-    title: "App Development",
+    title: "Mobile & Extensions",
     skills: [
-      { name: "React / Next.js", level: 95 },
-      { name: "TypeScript", level: 90 },
-      { name: "React Native", level: 85 },
-      { name: "Tailwind CSS", level: 95 },
+      { name: "Flutter", level: 94 },
+      { name: "Kotlin", level: 78 },
+      { name: "Chrome Extensions", level: 91 },
+      { name: "Cross-Platform Apps", level: 84 },
     ]
   },
   {
-    title: "Backend & Systems",
+    title: "Backend Development",
     skills: [
-      { name: "Node.js", level: 85 },
-      { name: "Python", level: 80 },
-      { name: "PostgreSQL", level: 75 },
-      { name: "Docker", level: 70 },
+      { name: "Flask", level: 82 },
+      { name: "FastAPI", level: 80 },
+      { name: "Firebase", level: 84 },
+      { name: "Supabase", level: 86 },
     ]
   },
   {
-    title: "Design & UX",
+    title: "AI & Automation",
     skills: [
-      { name: "Framer Motion", level: 90 },
-      { name: "Figma", level: 80 },
-      { name: "UI/UX Prototyping", level: 85 },
+      { name: "Prompt Engineering", level: 92 },
+      { name: "LLM Integration", level: 86 },
+      { name: "AI Workflow Design", level: 85 },
+      { name: "Automation Systems", level: 82 },
+    ]
+  },
+  {
+    title: "Programming & Problem Solving",
+    skills: [
+      { name: "C++", level: 84 },
+      { name: "DSA", level: 80 },
+      { name: "System Design Thinking", level: 78 },
     ]
   }
 ];
