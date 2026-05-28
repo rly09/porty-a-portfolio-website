@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Code2 } from "lucide-react";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { Footer } from "@/components/Footer";
 
 const projects = [
   {
@@ -35,49 +36,49 @@ export default function ProjectsPage() {
       <nav className="flex items-center justify-between mb-16">
         <Link 
           href="/"
-          className="flex items-center gap-2 text-mono-600 dark:text-mono-400 hover:text-mono-900 dark:hover:text-mono-100 transition-colors"
+          className="flex items-center gap-2 text-mono-600 dark:text-mono-400 hover:text-mono-950 dark:hover:text-mono-50 transition-colors font-mono text-sm tracking-tight"
         >
-          <ArrowLeft className="w-5 h-5" />
-          <span>Back to Home</span>
+          <ArrowLeft className="w-4 h-4" />
+          <span>BACK TO HOME</span>
         </Link>
         <ThemeToggle />
       </nav>
 
       <header className="mb-16">
-        <h1 className="text-4xl md:text-5xl font-medium tracking-tight text-mono-950 dark:text-mono-50 mb-4">
+        <h1 className="text-5xl md:text-7xl font-display tracking-tight text-mono-950 dark:text-mono-50 mb-4">
           Projects
         </h1>
-        <p className="text-lg text-mono-600 dark:text-mono-400">
-          Selected case studies and applications I've built.
+        <p className="text-lg md:text-xl font-mono text-mono-600 dark:text-mono-400 max-w-2xl leading-relaxed">
+          A selection of case studies, open-source work, and experimental digital products.
         </p>
       </header>
 
-      <div className="grid gap-8">
+      <div className="grid gap-12">
         {projects.map((project, index) => (
           <motion.div
             key={project.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="group relative flex flex-col md:flex-row gap-6 p-6 rounded-3xl bg-white/5 dark:bg-black/5 border border-black/5 dark:border-white/5 hover:bg-white/10 dark:hover:bg-black/10 transition-colors"
+            className="group relative flex flex-col md:flex-row gap-8 p-8 rounded-[2rem] bg-white/5 dark:bg-black/5 border border-black/5 dark:border-white/5 hover:bg-white/10 dark:hover:bg-black/10 transition-colors"
           >
             <div className="flex-1">
-              <div className="flex items-center gap-3 mb-3">
-                <h2 className="text-2xl font-medium text-mono-900 dark:text-mono-100">
-                  {project.title}
-                </h2>
-                <span className="text-sm px-2 py-1 rounded-full bg-black/5 dark:bg-white/5 text-mono-600 dark:text-mono-400">
+              <div className="flex items-center gap-4 mb-4">
+                <span className="text-xs font-mono font-bold text-accent-amber/80 uppercase tracking-widest px-3 py-1 rounded-full bg-accent-amber/10 border border-accent-amber/20">
                   {project.year}
                 </span>
+                <h2 className="text-2xl md:text-3xl font-display text-mono-950 dark:text-mono-50">
+                  {project.title}
+                </h2>
               </div>
-              <p className="text-mono-600 dark:text-mono-400 mb-6 max-w-xl text-lg leading-relaxed">
+              <p className="text-mono-600 dark:text-mono-400 mb-8 max-w-2xl text-lg leading-relaxed">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-3">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-sm px-3 py-1 rounded-full bg-mono-100 dark:bg-mono-900 text-mono-600 dark:text-mono-400 border border-black/5 dark:border-white/5"
+                    className="text-[10px] font-mono font-bold px-3 py-1 rounded-md bg-black/5 dark:bg-white/5 text-mono-500 dark:text-mono-400 uppercase tracking-tighter"
                   >
                     {tag}
                   </span>
@@ -85,17 +86,18 @@ export default function ProjectsPage() {
               </div>
             </div>
             
-            <div className="flex items-start gap-3 md:opacity-0 md:-translate-x-4 md:group-hover:opacity-100 md:group-hover:translate-x-0 transition-all duration-300">
-              <button className="p-3 rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
-                <Code2 className="w-5 h-5 text-mono-900 dark:text-mono-100" />
+            <div className="flex items-start gap-4">
+              <button className="p-4 rounded-full bg-black/5 dark:bg-white/5 hover:bg-accent-amber/10 hover:text-accent-amber transition-all group/btn">
+                <Code2 className="w-5 h-5" />
               </button>
-              <button className="p-3 rounded-full bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-colors">
-                <ExternalLink className="w-5 h-5 text-mono-900 dark:text-mono-100" />
+              <button className="p-4 rounded-full bg-black/5 dark:bg-white/5 hover:bg-accent-amber/10 hover:text-accent-amber transition-all group/btn">
+                <ExternalLink className="w-5 h-5" />
               </button>
             </div>
           </motion.div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 }

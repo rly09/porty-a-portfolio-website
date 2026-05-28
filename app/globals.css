@@ -19,19 +19,38 @@
   --color-foreground: var(--foreground);
   --color-border: var(--border);
 
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-amber: var(--accent-amber);
+  --color-accent-emerald: var(--accent-emerald);
+  --color-accent-rose: var(--accent-rose);
+
   --font-sans: var(--font-inter);
+  --font-display: var(--font-calistoga);
+  --font-mono: var(--font-geist-mono);
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --border: #e5e5e5;
+  --background: #fcfcfc;
+  --foreground: #1a1a1a;
+  --border: #e8e8e8;
+  --accent-blue: #3b82f6;
+  --accent-amber: #f59e0b;
+  --accent-emerald: #10b981;
+  --accent-rose: #f43f5e;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #ffffff;
-  --border: #262626;
+  --background: #0f0f0f;
+  --foreground: #eeeeee;
+  --border: #2a2a2a;
+  --accent-blue: #60a5fa;
+  --accent-amber: #fbbf24;
+  --accent-emerald: #34d399;
+  --accent-rose: #fb7185;
+}
+
+body, div, section, main, header, footer, button, a, span, h1, h2, h3, h4, h5, h6, p {
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, fill 0.4s ease, stroke 0.4s ease;
 }
 
 body {
@@ -39,22 +58,6 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
   overflow-x: hidden;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-.noise-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 50;
-  opacity: 0.35;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-.dark .noise-overlay {
-  opacity: 0.15;
 }
 
 ::-webkit-scrollbar {

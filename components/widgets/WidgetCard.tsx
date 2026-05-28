@@ -20,7 +20,7 @@ export function WidgetCard({ href, children, className }: WidgetCardProps) {
       whileTap={{ scale: 0.95 }}
       onClick={() => router.push(href)}
       className={cn(
-        "relative w-full h-full text-left overflow-hidden rounded-xl md:rounded-2xl",
+        "relative w-full h-full text-left overflow-hidden rounded-lg md:rounded-xl",
         "bg-white/40 dark:bg-black/40 backdrop-blur-xl",
         "border border-black/5 dark:border-white/10",
         "shadow-sm transition-colors hover:bg-white/60 dark:hover:bg-white/5",

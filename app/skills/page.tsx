@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { Footer } from "@/components/Footer";
 
 const skillCategories = [
   {
@@ -40,24 +41,24 @@ export default function SkillsPage() {
       <nav className="flex items-center justify-between mb-16">
         <Link 
           href="/"
-          className="flex items-center gap-2 text-mono-600 dark:text-mono-400 hover:text-mono-900 dark:hover:text-mono-100 transition-colors"
+          className="flex items-center gap-2 text-mono-600 dark:text-mono-400 hover:text-mono-950 dark:hover:text-mono-50 transition-colors font-mono text-sm tracking-tight"
         >
-          <ArrowLeft className="w-5 h-5" />
-          <span>Back to Home</span>
+          <ArrowLeft className="w-4 h-4" />
+          <span>BACK TO HOME</span>
         </Link>
         <ThemeToggle />
       </nav>
 
       <header className="mb-16">
-        <h1 className="text-4xl md:text-5xl font-medium tracking-tight text-mono-950 dark:text-mono-50 mb-4">
+        <h1 className="text-5xl md:text-7xl font-display tracking-tight text-mono-950 dark:text-mono-50 mb-4">
           Skills
         </h1>
-        <p className="text-lg text-mono-600 dark:text-mono-400">
-          Tools and technologies I use to build digital experiences.
+        <p className="text-lg md:text-xl font-mono text-mono-600 dark:text-mono-400 max-w-2xl leading-relaxed">
+          The technical foundation I use to build robust, intelligent digital products.
         </p>
       </header>
 
-      <div className="grid gap-12">
+      <div className="grid gap-16">
         {skillCategories.map((category, idx) => (
           <motion.div 
             key={category.title}
@@ -65,22 +66,24 @@ export default function SkillsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.1 }}
           >
-            <h2 className="text-2xl font-medium text-mono-900 dark:text-mono-100 mb-6">
+            <h2 className="text-xl md:text-2xl font-display text-mono-950 dark:text-mono-50 mb-8 flex items-center gap-4">
+              <span className="w-8 h-[1px] bg-accent-blue/30" />
               {category.title}
             </h2>
-            <div className="grid gap-4">
+            <div className="grid gap-6 md:grid-cols-2">
               {category.skills.map((skill) => (
-                <div key={skill.name} className="flex flex-col gap-2">
-                  <div className="flex justify-between text-sm text-mono-600 dark:text-mono-400">
-                    <span>{skill.name}</span>
+                <div key={skill.name} className="flex flex-col gap-3">
+                  <div className="flex justify-between items-end">
+                    <span className="text-sm font-mono font-medium text-mono-800 dark:text-mono-200 uppercase tracking-widest">{skill.name}</span>
+                    <span className="text-[10px] font-mono text-mono-400">{skill.level}%</span>
                   </div>
-                  <div className="h-1.5 w-full bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
+                  <div className="h-1 w-full bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">
                     <motion.div 
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}
                       viewport={{ once: true }}
                       transition={{ duration: 1, type: "spring", bounce: 0 }}
-                      className="h-full bg-mono-900 dark:bg-mono-100 rounded-full"
+                      className="h-full bg-accent-blue/80 dark:bg-accent-blue/60 rounded-full"
                     />
                   </div>
                 </div>
@@ -89,6 +92,7 @@ export default function SkillsPage() {
           </motion.div>
         ))}
       </div>
+      <Footer />
     </div>
   );
 }
