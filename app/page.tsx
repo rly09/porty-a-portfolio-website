@@ -1,13 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { DeviceSwitcher } from "@/components/ui/DeviceSwitcher";
 import { DeviceFrame } from "@/components/DeviceFrame";
 import { DeviceProvider, useDevice } from "@/components/DeviceContext";
 import { WidgetGrid } from "@/components/widgets/WidgetGrid";
 import { FloatingQuotes } from "@/components/FloatingQuotes";
-import type { DeviceType } from "@/types/device";
 
 function LandingContent() {
   const { device, setDevice } = useDevice();

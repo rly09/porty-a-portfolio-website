@@ -1,7 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { 
+  ArrowLeft, 
+  Smartphone, 
+  Code2, 
+  Globe, 
+  Layers, 
+  Zap, 
+  Flame, 
+  Database, 
+  Bot, 
+  Network, 
+  Terminal, 
+  Binary, 
+  Layout,
+  Brain,
+  Settings
+} from "lucide-react";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Footer } from "@/components/Footer";
@@ -10,36 +26,36 @@ const skillCategories = [
   {
     title: "Mobile & Extensions",
     skills: [
-      { name: "Flutter", level: 94 },
-      { name: "Kotlin", level: 78 },
-      { name: "Chrome Extensions", level: 91 },
-      { name: "Cross-Platform Apps", level: 84 },
+      { name: "Flutter", level: 94, icon: Smartphone },
+      { name: "Kotlin", level: 78, icon: Code2 },
+      { name: "Chrome Extensions", level: 91, icon: Globe },
+      { name: "Cross-Platform Apps", level: 84, icon: Layers },
     ]
   },
   {
     title: "Backend Development",
     skills: [
-      { name: "Flask", level: 82 },
-      { name: "FastAPI", level: 80 },
-      { name: "Firebase", level: 84 },
-      { name: "Supabase", level: 86 },
+      { name: "Flask", level: 82, icon: Database },
+      { name: "FastAPI", level: 80, icon: Zap },
+      { name: "Firebase", level: 84, icon: Flame },
+      { name: "Supabase", level: 86, icon: Database },
     ]
   },
   {
     title: "AI & Automation",
     skills: [
-      { name: "Prompt Engineering", level: 92 },
-      { name: "LLM Integration", level: 86 },
-      { name: "AI Workflow Design", level: 85 },
-      { name: "Automation Systems", level: 82 },
+      { name: "Prompt Engineering", level: 92, icon: Brain },
+      { name: "LLM Integration", level: 86, icon: Bot },
+      { name: "AI Workflow Design", level: 85, icon: Network },
+      { name: "Automation Systems", level: 82, icon: Settings },
     ]
   },
   {
     title: "Programming & Problem Solving",
     skills: [
-      { name: "C++", level: 84 },
-      { name: "DSA", level: 80 },
-      { name: "System Design Thinking", level: 78 },
+      { name: "C++", level: 84, icon: Terminal },
+      { name: "DSA", level: 80, icon: Binary },
+      { name: "System Design Thinking", level: 78, icon: Layout },
     ]
   }
 ];
@@ -83,7 +99,10 @@ export default function SkillsPage() {
               {category.skills.map((skill) => (
                 <div key={skill.name} className="flex flex-col gap-3">
                   <div className="flex justify-between items-end">
-                    <span className="text-sm font-mono font-medium text-mono-800 dark:text-mono-200 uppercase tracking-widest">{skill.name}</span>
+                    <div className="flex items-center gap-2">
+                      <skill.icon className="w-4 h-4 text-accent-blue/80 dark:text-accent-blue/60" />
+                      <span className="text-sm font-mono font-medium text-mono-800 dark:text-mono-200 uppercase tracking-widest">{skill.name}</span>
+                    </div>
                     <span className="text-[10px] font-mono text-mono-400">{skill.level}%</span>
                   </div>
                   <div className="h-1 w-full bg-black/5 dark:bg-white/5 rounded-full overflow-hidden">

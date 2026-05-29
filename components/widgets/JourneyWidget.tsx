@@ -1,5 +1,5 @@
 import { WidgetCard } from "./WidgetCard";
-import { Milestone, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 export function JourneyWidget() {
   return (
