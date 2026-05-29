@@ -26,7 +26,7 @@ const projects = [
     tags: ["Flutter", "FastAPI", "Linear Regression", "FAISS"],
     year: "2026",
     image: "/assets/Chanakya.png",
-    githubRepo: "https://github.com/rly09/caselens"
+    githubRepo: "https://github.com/rly09/chanakya-baburaodevs"
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ const projects = [
     tags: ["Flutter", "Supabase"],
     year: "2025",
     image: "/assets/careerverse.png",
-    githubRepo: "https://github.com/rly09/career-verse"
+    githubRepo: "https://github.com/rly09/careerverse"
   },
   {
     id: 5,
