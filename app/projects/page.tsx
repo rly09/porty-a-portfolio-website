@@ -15,7 +15,7 @@ const projects = [
     description: "Built a cross-platform voice assistant for Android using Flutter and Supabase, automating hands-free device actions (calls, alarms, WhatsApp messaging, media playback).",
     tags: ["Flutter", "Supabase", "HiveDb", "LLMs", "Gemini API"],
     year: "2026",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop",
+    image: "/assets/boloai.png",
     githubRepo: "https://github.com/rly09/hey_bolo"
   },
   {
@@ -25,7 +25,7 @@ const projects = [
     description: "A legal intelligence platform that uses AI to analyze and predict legal outcomes based on historical case data and current statutes.",
     tags: ["Flutter", "FastAPI", "Linear Regression", "FAISS"],
     year: "2026",
-    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&auto=format&fit=crop",
+    image: "/assets/Chanakya.png",
     githubRepo: "https://github.com/rly09/caselens"
   },
   {
@@ -34,7 +34,7 @@ const projects = [
     description: "Built a Chrome extension that transfers conversations between Claude, ChatGPT, Gemini, and Perplexity with one click, preserving context.",
     tags: ["Chrome Extension", "React", "Tailwind CSS", "Plasmo Framework"],
     year: "2026",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop",
+    image: "/assets/syncmind.png",
     githubRepo: "https://github.com/rly09/syncmind"
   },
   {
@@ -43,7 +43,7 @@ const projects = [
     description: "A full-stack Flutter app that provides personalized career paths by analyzing quiz responses and strengths using AI-powered recommendations.",
     tags: ["Flutter", "Supabase"],
     year: "2025",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop",
+    image: "/assets/careerverse.png",
     githubRepo: "https://github.com/rly09/career-verse"
   },
   {
@@ -52,7 +52,7 @@ const projects = [
     description: "ROT tracks your daily screen time and roasts you for it.See where your time went, feel bad about it, and share your shame.",
     tags: ["Flutter", "sharedpreferences", "Riverpod"],
     year: "2026",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop",
+    image: "/assets/rot.png",
     githubRepo: "https://github.com/rly09/phoneshame"
   },
   {
@@ -61,7 +61,7 @@ const projects = [
     description: "A machine learning model that predicts house prices in Chennai using historical data and real-time market trends.",
     tags: ["Flutter", "Python", "Scikit-learn", "Linear Regression"],
     year: "2026",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop",
+    image: "/assets/chennaihouseprice.png",
     githubRepo: "https://github.com/rly09/Chennai-house-price-prediction"
   },
   {
@@ -70,7 +70,7 @@ const projects = [
     description: "A luxury car rental platform that allows users to book and manage their car rentals with ease.",
     tags: ["Flutter", "Riverpod"],
     year: "2026",
-    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&auto=format&fit=crop",
+    image: "/assets/carrentalluxary.png",
     githubRepo: "https://github.com/rly09/car-rental-luxury"
   },
   {
@@ -79,7 +79,7 @@ const projects = [
     description: "Chalchitra is a Flutter-based movie browsing and discovery app designed for Android, iOS, Web, Windows, macOS, and Linux.",
     tags: ["Flutter", "Cosine Similarity"],
     year: "2026",
-    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop",
+    image: "/assets/chalchitra.jpg",
     githubRepo: "https://github.com/rly09/Chalchitra"
   },
   {
@@ -88,7 +88,7 @@ const projects = [
     description: "A modern, minimal, and fully functional social media app built with Flutter, BLoC, and Firebase.It uses Pravatar and Picsum for avatars and post images (to avoid storage costs), Firebase Auth for authentication, Firestore for database, and Lottie animations for smooth loading transitions.",
     tags: ["Flutter", "BLoC", "Firebase"],
     year: "2025",
-    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&auto=format&fit=crop",
+    image: "/assets/mil.png",
     githubRepo: "https://github.com/rly09/Mil"
   }
 ];
