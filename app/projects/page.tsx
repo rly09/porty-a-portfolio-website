@@ -20,31 +20,76 @@ const projects = [
   },
   {
     id: 2,
-    title: "CaseLens",
+    title: "Chanakya",
     subtitle: "AI Powered Legal Intelligence Platform",
     description: "A legal intelligence platform that uses AI to analyze and predict legal outcomes based on historical case data and current statutes.",
     tags: ["Flutter", "FastAPI", "Linear Regression", "FAISS"],
     year: "2026",
     image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&auto=format&fit=crop",
-    githubRepo: "https://github.com/yourusername/caselens"
+    githubRepo: "https://github.com/rly09/caselens"
   },
   {
     id: 3,
+    title: "SyncMind",
+    description: "Built a Chrome extension that transfers conversations between Claude, ChatGPT, Gemini, and Perplexity with one click, preserving context.",
+    tags: ["Chrome Extension", "React", "Tailwind CSS", "Plasmo Framework"],
+    year: "2026",
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop",
+    githubRepo: "https://github.com/rly09/syncmind"
+  },
+  {
+    id: 4,
     title: "Career Verse",
     description: "A full-stack Flutter app that provides personalized career paths by analyzing quiz responses and strengths using AI-powered recommendations.",
     tags: ["Flutter", "Supabase"],
     year: "2025",
     image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop",
-    githubRepo: "https://github.com/yourusername/career-verse"
+    githubRepo: "https://github.com/rly09/career-verse"
   },
   {
-    id: 4,
-    title: "SyncMind",
-    description: "Built a Chrome extension that transfers conversations between Claude, ChatGPT, Gemini, and Perplexity with one click, preserving context.",
-    tags: ["Chrome Extension", "React", "Tailwind CSS", "Plasmo Framework"],
+    id: 5,
+    title: "ROT",
+    description: "ROT tracks your daily screen time and roasts you for it.See where your time went, feel bad about it, and share your shame.",
+    tags: ["Flutter", "sharedpreferences", "Riverpod"],
     year: "2026",
-    image: "https://images.unsplash.com/photo-1551288049-bbbda536339a?q=80&w=800&auto=format&fit=crop",
-    githubRepo: "https://github.com/yourusername/syncmind"
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop",
+    githubRepo: "https://github.com/rly09/phoneshame"
+  },
+  {
+    id: 6,
+    title: "Chennai House Price Prediction",
+    description: "A machine learning model that predicts house prices in Chennai using historical data and real-time market trends.",
+    tags: ["Flutter", "Python", "Scikit-learn", "Linear Regression"],
+    year: "2026",
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop",
+    githubRepo: "https://github.com/rly09/Chennai-house-price-prediction"
+  },
+  {
+    id: 7,
+    title: "Car Rental Luxury",
+    description: "A luxury car rental platform that allows users to book and manage their car rentals with ease.",
+    tags: ["Flutter", "Riverpod"],
+    year: "2026",
+    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&auto=format&fit=crop",
+    githubRepo: "https://github.com/rly09/car-rental-luxury"
+  },
+  {
+    id: 8,
+    title: "Chalchitra",
+    description: "Chalchitra is a Flutter-based movie browsing and discovery app designed for Android, iOS, Web, Windows, macOS, and Linux.",
+    tags: ["Flutter", "Cosine Similarity"],
+    year: "2026",
+    image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800&auto=format&fit=crop",
+    githubRepo: "https://github.com/rly09/Chalchitra"
+  },
+  {
+    id: 9,
+    title: "Mil",
+    description: "A modern, minimal, and fully functional social media app built with Flutter, BLoC, and Firebase.It uses Pravatar and Picsum for avatars and post images (to avoid storage costs), Firebase Auth for authentication, Firestore for database, and Lottie animations for smooth loading transitions.",
+    tags: ["Flutter", "BLoC", "Firebase"],
+    year: "2025",
+    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800&auto=format&fit=crop",
+    githubRepo: "https://github.com/rly09/Mil"
   }
 ];
 
