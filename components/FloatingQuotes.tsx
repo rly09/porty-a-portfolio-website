@@ -25,8 +25,8 @@ export function FloatingQuotes() {
   const [words, setWords] = useState<FloatingWord[]>([]);
 
   useEffect(() => {
-    const gridCols = 8;
-    const gridRows = 8;
+    const gridCols = 6;
+    const gridRows = 6;
     const newWords: FloatingWord[] = [];
     
     const positions: { x: number; y: number }[] = [];
@@ -38,18 +38,19 @@ export function FloatingQuotes() {
 
     const shuffledPositions = [...positions].sort(() => Math.random() - 0.5);
     
-    for (let i = 0; i < Math.min(WORDS.length, shuffledPositions.length); i++) {
+    // Using roughly half of the available words/positions for better performance
+    for (let i = 0; i < Math.min(25, shuffledPositions.length); i++) {
       const pos = shuffledPositions[i];
       newWords.push({
         id: i,
         text: WORDS[i],
-        gridX: (pos.x * (100 / gridCols)) + 5,
-        gridY: (pos.y * (100 / gridRows)) + 5,
+        gridX: (pos.x * (100 / gridCols)) + 8,
+        gridY: (pos.y * (100 / gridRows)) + 8,
         duration: Math.random() * 10 + 20,
         delay: Math.random() * -20,
         offset: {
-          x: (Math.random() - 0.5) * 8, // Reduced offset to minimize overlap
-          y: (Math.random() - 0.5) * 8
+          x: (Math.random() - 0.5) * 40, // Increased pixel offset for transform
+          y: (Math.random() - 0.5) * 40
         }
       });
     }
@@ -62,25 +63,20 @@ export function FloatingQuotes() {
       {words.map((word) => (
         <motion.div
           key={word.id}
+          style={{
+            left: `${word.gridX}%`,
+            top: `${word.gridY}%`,
+            willChange: "transform, opacity",
+          }}
           initial={{ 
-            left: `${word.gridX}%`, 
-            top: `${word.gridY}%`, 
-            opacity: 0 
+            opacity: 0,
+            x: 0,
+            y: 0
           }}
           animate={{
-            left: [
-              `${word.gridX}%`,
-              `${word.gridX + word.offset.x}%`,
-              `${word.gridX - word.offset.x}%`,
-              `${word.gridX}%`,
-            ],
-            top: [
-              `${word.gridY}%`,
-              `${word.gridY + word.offset.y}%`,
-              `${word.gridY - word.offset.y}%`,
-              `${word.gridY}%`,
-            ],
-            opacity: [0, 0.5, 0.2, 0.5, 0],
+            x: [0, word.offset.x, -word.offset.x, 0],
+            y: [0, word.offset.y, -word.offset.y, 0],
+            opacity: [0, 0.4, 0.2, 0.4, 0],
           }}
           transition={{
             duration: word.duration,

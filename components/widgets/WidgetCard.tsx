@@ -18,10 +18,11 @@ export function WidgetCard({ href, children, className }: WidgetCardProps) {
     <motion.button
       whileHover={{ scale: 0.98 }}
       whileTap={{ scale: 0.95 }}
+      style={{ willChange: "transform" }}
       onClick={() => router.push(href)}
       className={cn(
         "relative w-full h-full text-left overflow-hidden rounded-lg md:rounded-xl",
-        "bg-white/40 dark:bg-black/40 backdrop-blur-xl",
+        "bg-white/40 dark:bg-black/40 backdrop-blur-md",
         "border border-black/5 dark:border-white/10",
         "shadow-sm transition-colors hover:bg-white/60 dark:hover:bg-white/5",
         "group",

@@ -133,6 +133,7 @@ export default function ProjectsPage() {
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 scale-110 group-hover:scale-100"
+                style={{ willChange: "transform, filter" }}
               />
             </div>
 
