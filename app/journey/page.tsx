@@ -11,19 +11,19 @@ const timeline = [
     year: "Jan 2026 - Apr 2026",
     title: "Project Intern",
     company: "Trucxo",
-    description: "Built scalable microservices in Node.js and interactive dashboards in React, improving internal operations efficiency by 40%."
+    description: "Built and implemented a cross-platform mobile and web application using Flutter and Firebase, gaining hands-on experience with localization, authentication, and real-time backend integration."
   },
   {
     year: "Oct 2025 - Feb 2026",
     title: "Flutter Developer Intern",
     company: "Spazorlabs",
-    description: "Designed and implemented award-winning landing pages with complex animations and 3D web experiences."
+    description: "Developed and deployed cross-platform mobile apps using Flutter and Supabase."
   },
   {
     year: "May 2024 - May 2028",
     title: "B.Tech Computer Science",
     company: "SRM Institute of Science and Technology",
-    description: "Focused on human-computer interaction and distributed systems. Graduated with honors."
+    description: "Pursuing a Bachelor's degree in Computer Science with a focus on Data Structures & Algorithms, Full-Stack Development, Mobile App Development, and Artificial Intelligence. Actively building real-world projects and exploring scalable software systems."
   }
 ];
 
