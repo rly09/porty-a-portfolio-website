@@ -39,15 +39,19 @@ export function DeviceFrame({ children }: { children: ReactNode }) {
       if (typeof window === "undefined") return;
       const maxWidth = window.innerWidth - 32;
       const maxHeight = window.innerHeight - 220;
+      
+      // Account for the stand height in desktop mode (approx 80px)
+      const effectiveHeight = device === "desktop" ? currentStyle.height + 80 : currentStyle.height;
+      
       const scaleX = maxWidth / currentStyle.width;
-      const scaleY = maxHeight / currentStyle.height;
+      const scaleY = maxHeight / effectiveHeight;
       setScale(Math.min(1, scaleX, scaleY));
     };
 
     updateScale();
     window.addEventListener("resize", updateScale);
     return () => window.removeEventListener("resize", updateScale);
-  }, [currentStyle.width, currentStyle.height]);
+  }, [device]); // Use only device as dependency to keep array size stable
 
   return (
     <div className="flex flex-col items-center justify-center w-full max-w-full relative py-8">
@@ -141,22 +145,22 @@ export function DeviceFrame({ children }: { children: ReactNode }) {
             </div>
           </motion.div>
         </motion.div>
-      </motion.div>
 
-      {/* Desktop Monitor Stand */}
-      <AnimatePresence>
-        {device === "desktop" && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="relative z-0 flex flex-col items-center"
-          >
-            <div className="w-24 h-16 bg-gradient-to-b from-mono-300 to-mono-400 dark:from-[#222] dark:to-[#111] border-x border-mono-400 dark:border-[#333]" />
-            <div className="w-48 h-3 bg-gradient-to-b from-mono-300 to-mono-400 dark:from-[#333] dark:to-[#111] rounded-t-sm shadow-xl" />
-          </motion.div>
-        )}
-      </AnimatePresence>
+        {/* Desktop Monitor Stand - Now inside scaled container to stay connected */}
+        <AnimatePresence>
+          {device === "desktop" && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="absolute top-full left-1/2 -translate-x-1/2 z-0 flex flex-col items-center"
+            >
+              <div className="w-24 h-16 bg-gradient-to-b from-mono-300 to-mono-400 dark:from-[#222] dark:to-[#111] border-x border-mono-400 dark:border-[#333]" />
+              <div className="w-48 h-3 bg-gradient-to-b from-mono-300 to-mono-400 dark:from-[#333] dark:to-[#111] rounded-t-sm shadow-xl" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 }
