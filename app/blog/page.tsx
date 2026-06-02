@@ -66,6 +66,33 @@ const rawPosts: Post[] = [
       { type: "p", text: "The risk is relying too much on generated code without understanding it. If you can't debug what the AI wrote, you don't own the project—it owns you. We must remain the architects, not just the assemblers." },
       { type: "p", text: "The future belongs to the builders who can orchestrate these powerful tools to create experiences that were previously impossible for a single developer to build." }
     ]
+  },
+  {
+    id: 4,
+    title: "The Importance of Design Systems",
+    excerpt: "Why consistency is the foundation of any great digital product.",
+    date: "June 1, 2026",
+    content: [
+      { type: "p", text: "Design systems are more than just a collection of UI components. They are the language through which a product communicates with its users. Consistency isn't just about aesthetics; it's about building trust and reducing cognitive load." },
+      { type: "h3", text: "Scaling Creativity" },
+      { type: "p", text: "A well-implemented design system allows developers and designers to focus on solving high-level problems rather than reinventing the wheel for every new feature. It provides a shared source of truth that bridges the gap between design and implementation." },
+      { type: "p", text: "In my recent projects, I've seen how a robust system can speed up the development cycle by up to 40%. When the foundation is solid, the rest of the building goes up much faster." },
+      { type: "blockquote", text: "Design is not just what it looks like and feels like. Design is how it works.", author: "Steve Jobs" },
+      { type: "p", text: "Investing in a design system early on is one of the best decisions a team can make. It's an investment in the long-term health and scalability of the product." }
+    ]
+  },
+  {
+    id: 5,
+    title: "Optimizing Performance in Modern Web Apps",
+    excerpt: "Techniques for building lightning-fast user experiences.",
+    date: "June 2, 2026",
+    content: [
+      { type: "p", text: "Performance is a feature. In an era where users expect instant feedback, even a few hundred milliseconds of delay can lead to a significant drop in engagement. Optimizing performance isn't just a technical task; it's a core part of the user experience." },
+      { type: "h3", text: "Beyond the Basics" },
+      { type: "p", text: "While minification and image optimization are standard, modern web apps require more sophisticated techniques. Server-side rendering (SSR), static site generation (SSG), and edge computing are now essential tools in a developer's arsenal." },
+      { type: "p", text: "I've been experimenting with partial hydration and streaming to deliver content faster. By only loading the JavaScript that's absolutely necessary for the current view, we can significantly reduce the Time to Interactive (TTI)." },
+      { type: "p", text: "Every millisecond counts. As builders, we have a responsibility to respect our users' time and bandwidth by delivering the most efficient experiences possible." }
+    ]
   }
 ];
 
