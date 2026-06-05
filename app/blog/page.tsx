@@ -93,6 +93,37 @@ const rawPosts: Post[] = [
       { type: "p", text: "I've been experimenting with partial hydration and streaming to deliver content faster. By only loading the JavaScript that's absolutely necessary for the current view, we can significantly reduce the Time to Interactive (TTI)." },
       { type: "p", text: "Every millisecond counts. As builders, we have a responsibility to respect our users' time and bandwidth by delivering the most efficient experiences possible." }
     ]
+  },
+  {
+    id: 6,
+    title: "Shipping Small Improvements Every Day",
+    excerpt: "Why steady, visible progress beats waiting for one perfect release.",
+    date: "June 4, 2026",
+    content: [
+      { type: "p", text: "The most reliable way I have found to improve a product is to ship small, useful changes consistently. A tiny improvement that reaches users today teaches more than a large feature that stays unfinished for weeks." },
+      { type: "p", text: "Small releases reduce pressure because each decision has a narrower blast radius. If something does not work, it is easier to understand, fix, or roll back. That makes experimentation feel practical instead of risky." },
+      { type: "h3", text: "Momentum Comes from Closure" },
+      { type: "p", text: "Completing a small slice gives a project rhythm. It turns vague ambition into a working artifact, and that artifact becomes the next thing to refine. The habit matters as much as the feature." },
+      { type: "p", text: "This approach also protects focus. Instead of trying to redesign an entire system at once, I ask what one change would make the experience clearer, faster, or more useful today." },
+      { type: "blockquote", text: "Progress compounds when you make it easy to finish.", author: "Personal note" },
+      { type: "p", text: "The goal is not to move carelessly. It is to keep the feedback loop alive so quality improves through contact with reality." }
+    ]
+  },
+  {
+    id: 7,
+    title: "What I Look for Before Starting a New Project",
+    excerpt: "The checklist I use to decide whether an idea is worth building now.",
+    date: "June 5, 2026",
+    content: [
+      { type: "p", text: "Before I start a new project, I try to separate excitement from signal. New ideas are easy to love in the first hour, but a strong project needs a clear problem, a reachable first version, and a reason to keep improving it after the launch energy fades." },
+      { type: "h3", text: "A Clear User Pain" },
+      { type: "p", text: "The first question is simple: who is this for, and what friction does it remove? If I cannot describe the pain in plain language, I probably do not understand the product yet." },
+      { type: "h3", text: "A Small First Version" },
+      { type: "p", text: "I also look for a version that can be built quickly without pretending it solves everything. A focused first version gives me something concrete to test, improve, and explain." },
+      { type: "h3", text: "Room to Grow" },
+      { type: "p", text: "The best ideas have a useful core and a natural path forward. They can start small, but they should not be dead ends. There should be obvious ways to deepen the experience once the foundation works." },
+      { type: "p", text: "When an idea passes those checks, I can start with confidence. Not because success is guaranteed, but because the next step is clear enough to build." }
+    ]
   }
 ];
 
