@@ -22,6 +22,33 @@ interface Post {
 
 const rawPosts: Post[] = [
   {
+    id: 9,
+    title: "The Future of Minimalist Interfaces",
+    excerpt: "Exploring why simplicity remains the most powerful design philosophy in an increasingly complex digital world.",
+    date: "June 9, 2026",
+    content: [
+      { type: "p", text: "In an era of information overload, minimalism is no longer just a style; it's a necessity. As digital products become more feature-rich, the role of the designer is to distill that complexity into something intuitive and calm." },
+      { type: "h3", text: "Clarity Over Clutter" },
+      { type: "p", text: "Minimalism isn't about removing features; it's about removing friction. Every element on the screen should earn its place. If it doesn't help the user achieve their goal, it's a distraction." },
+      { type: "p", text: "I've found that the most successful interfaces are those that disappear, leaving only the user and their task. This requires a deep understanding of user intent and a willingness to say no to unnecessary decorations." },
+      { type: "blockquote", text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci" },
+      { type: "p", text: "As we look forward, the challenge will be to maintain this simplicity while integrating increasingly powerful AI and automation features. The best interfaces will be those that manage that complexity behind the scenes." }
+    ]
+  },
+  {
+    id: 8,
+    title: "Refining the User Experience: Small Touches, Big Impact",
+    excerpt: "How minor interface adjustments can significantly improve how users feel about a product.",
+    date: "June 8, 2026",
+    content: [
+      { type: "p", text: "Often, the difference between a good product and a great one lies in the details that users might not even consciously notice. Micro-interactions, subtle animations, and thoughtful typography all contribute to a sense of polish and care." },
+      { type: "h3", text: "The Power of Micro-interactions" },
+      { type: "p", text: "A gentle bounce when a list reaches the end, a smooth transition between states, or a well-timed haptic response—these small moments provide feedback and delight. They make the digital feel tangible." },
+      { type: "p", text: "In my recent work on Porty, I focused on these tiny transitions. By ensuring that every action has a corresponding visual reaction, the entire experience feels more responsive and alive." },
+      { type: "p", text: "Never underestimate the impact of 'invisible' design. When something works perfectly, users don't think about the design; they just feel empowered." }
+    ]
+  },
+  {
     id: 1,
     title: "Why I Build Before I Feel Ready",
     excerpt: "My approach to learning by building real products instead of waiting until I've mastered every technology.",
