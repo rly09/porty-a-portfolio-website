@@ -22,6 +22,22 @@ interface Post {
 
 const rawPosts: Post[] = [
   {
+    id: 10,
+    title: "Building a Portfolio That Evolves With You",
+    excerpt: "Why a personal site should be a living product—not a static snapshot frozen in time.",
+    date: "June 10, 2026",
+    content: [
+      { type: "p", text: "For a long time, I treated my portfolio like a brochure: design it once, ship it, and move on. That worked when my work was a fixed set of projects. But as I kept building, the site fell behind. New projects sat in folders while the homepage still showed last year's highlights." },
+      { type: "h3", text: "A Portfolio Is a Product" },
+      { type: "p", text: "The shift came when I started thinking of Porty less as a showcase and more as a product I use every day. It has a blog, widgets, a design system, and room to grow. That mindset changes how you build it—you optimize for iteration, not perfection on day one." },
+      { type: "p", text: "A living portfolio lets you document what you're learning in real time. A blog post about a design decision you made this week is more honest than a polished case study written six months later from memory." },
+      { type: "blockquote", text: "Your portfolio is not a museum. It's a workshop with a window.", author: "Personal note" },
+      { type: "h3", text: "Small Updates, Steady Presence" },
+      { type: "p", text: "I don't wait for a major redesign to update the site. A new blog entry, a refined animation, a project card swapped in—these small changes keep the portfolio current without demanding a full rewrite." },
+      { type: "p", text: "The goal isn't to impress with complexity. It's to give anyone visiting a clear, up-to-date picture of who I am as a builder right now. That only works if the site evolves as I do." }
+    ]
+  },
+  {
     id: 9,
     title: "The Future of Minimalist Interfaces",
     excerpt: "Exploring why simplicity remains the most powerful design philosophy in an increasingly complex digital world.",
