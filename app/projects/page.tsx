@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowLeft, Code2 } from "lucide-react";
+import { ArrowLeft, Code2, Download } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -20,6 +20,17 @@ const projects = [
   },
   {
     id: 2,
+    title: "CodeLoom Explorer",
+    subtitle: "Weave your codebase into a living, interactive architecture graph.",
+    description: "A privacy-first VS Code extension that generates interactive 2D knowledge graphs of your codebase locally. It helps developers visualize dependencies, perform impact analysis, and monitor repository health.",
+    tags: ["VS Code Extension", "AST", "React Flow", "React"],
+    year: "2026",
+    image: "/assets/codeloomexplorer.png",
+    githubRepo: "https://github.com/rly09/codeloom",
+    download: "https://marketplace.visualstudio.com/items?itemName=rly09.codeloom-rly09"
+  },
+  {
+    id: 3,
     title: "Chanakya",
     subtitle: "AI Powered Legal Intelligence Platform",
     description: "A legal intelligence platform that uses AI to analyze and predict legal outcomes based on historical case data and current statutes.",
@@ -29,7 +40,7 @@ const projects = [
     githubRepo: "https://github.com/rly09/chanakya-baburaodevs"
   },
   {
-    id: 3,
+    id: 4,
     title: "SyncMind",
     description: "Built a Chrome extension that transfers conversations between Claude, ChatGPT, Gemini, and Perplexity with one click, preserving context.",
     tags: ["Chrome Extension", "React", "Tailwind CSS", "Plasmo Framework"],
@@ -38,7 +49,7 @@ const projects = [
     githubRepo: "https://github.com/rly09/syncmind"
   },
   {
-    id: 4,
+    id: 5,
     title: "Career Verse",
     description: "A full-stack Flutter app that provides personalized career paths by analyzing quiz responses and strengths using AI-powered recommendations.",
     tags: ["Flutter", "Supabase"],
@@ -47,7 +58,7 @@ const projects = [
     githubRepo: "https://github.com/rly09/careerverse"
   },
   {
-    id: 5,
+    id: 6,
     title: "ROT",
     description: "ROT tracks your daily screen time and roasts you for it.See where your time went, feel bad about it, and share your shame.",
     tags: ["Flutter", "sharedpreferences", "Riverpod"],
@@ -56,7 +67,7 @@ const projects = [
     githubRepo: "https://github.com/rly09/phoneshame"
   },
   {
-    id: 6,
+    id: 7,
     title: "Chennai House Price Prediction",
     description: "A machine learning model that predicts house prices in Chennai using historical data and real-time market trends.",
     tags: ["Flutter", "Python", "Scikit-learn", "Linear Regression"],
@@ -65,7 +76,7 @@ const projects = [
     githubRepo: "https://github.com/rly09/Chennai-house-price-prediction"
   },
   {
-    id: 7,
+    id: 8,
     title: "Car Rental Luxury",
     description: "A luxury car rental platform that allows users to book and manage their car rentals with ease.",
     tags: ["Flutter", "Riverpod"],
@@ -74,7 +85,7 @@ const projects = [
     githubRepo: "https://github.com/rly09/car-rental-luxury"
   },
   {
-    id: 8,
+    id: 9,
     title: "Chalchitra",
     description: "Chalchitra is a Flutter-based movie browsing and discovery app designed for Android, iOS, Web, Windows, macOS, and Linux.",
     tags: ["Flutter", "Cosine Similarity"],
@@ -83,7 +94,7 @@ const projects = [
     githubRepo: "https://github.com/rly09/Chalchitra"
   },
   {
-    id: 9,
+    id: 10,
     title: "Mil",
     description: "A modern, minimal, and fully functional social media app built with Flutter, BLoC, and Firebase.It uses Pravatar and Picsum for avatars and post images (to avoid storage costs), Firebase Auth for authentication, Firestore for database, and Lottie animations for smooth loading transitions.",
     tags: ["Flutter", "BLoC", "Firebase"],
@@ -126,13 +137,13 @@ export default function ProjectsPage() {
             className="group relative flex flex-col md:flex-row gap-8 p-6 md:p-8 rounded-[2rem] bg-white/5 dark:bg-black/5 border border-black/5 dark:border-white/5 hover:bg-white/10 dark:hover:bg-black/10 transition-all duration-500"
           >
             {/* Project Image Container */}
-            <div className="w-full md:w-72 lg:w-96 aspect-video md:aspect-square rounded-2xl overflow-hidden bg-mono-200 dark:bg-mono-800 shrink-0 relative">
+            <div className="w-full md:w-72 lg:w-96 rounded-2xl overflow-hidden bg-mono-200/50 dark:bg-mono-800/50 shrink-0 relative flex items-center justify-center">
               <Image 
                 src={project.image} 
                 alt={project.title}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 scale-110 group-hover:scale-100"
+                width={800}
+                height={800}
+                className="w-full h-auto transition-all duration-700"
                 style={{ willChange: "transform, filter" }}
               />
             </div>
@@ -168,16 +179,29 @@ export default function ProjectsPage() {
                   ))}
                 </div>
 
-                <div className="flex items-center">
-                  <a 
-                    href={project.githubRepo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 px-6 py-3 rounded-full bg-mono-950 dark:bg-mono-50 text-mono-50 dark:text-mono-950 font-mono text-xs font-bold uppercase tracking-widest hover:bg-accent-amber dark:hover:bg-accent-amber hover:text-mono-950 transition-all active:scale-95"
-                  >
-                    <Code2 className="w-4 h-4" />
-                    <span>View Repository</span>
-                  </a>
+                <div className="flex flex-wrap items-center gap-4">
+                  {"githubRepo" in project && (
+                    <a 
+                      href={project.githubRepo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 px-6 py-3 rounded-full bg-mono-950 dark:bg-mono-50 text-mono-50 dark:text-mono-950 font-mono text-xs font-bold uppercase tracking-widest hover:bg-accent-amber dark:hover:bg-accent-amber hover:text-mono-950 transition-all active:scale-95"
+                    >
+                      <Code2 className="w-4 h-4" />
+                      <span>View Repository</span>
+                    </a>
+                  )}
+                  {"download" in project && (
+                    <a 
+                      href={project.download}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 px-6 py-3 rounded-full bg-accent-amber text-mono-950 font-mono text-xs font-bold uppercase tracking-widest hover:bg-mono-950 dark:hover:bg-mono-50 hover:text-mono-50 dark:hover:text-mono-950 transition-all active:scale-95 border-2 border-accent-amber"
+                    >
+                      <Download className="w-4 h-4" />
+                      <span>Download Extension</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
