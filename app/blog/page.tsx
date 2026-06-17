@@ -22,6 +22,20 @@ interface Post {
 
 const rawPosts: Post[] = [
   {
+    id: 11,
+    title: "The Art of Continuous Learning in Tech",
+    excerpt: "How to stay relevant and curious in an industry that never stops moving.",
+    date: "June 17, 2026",
+    content: [
+      { type: "p", text: "In the world of technology, the only constant is change. What was cutting-edge last year might be legacy today. This rapid evolution can be overwhelming, but it's also what makes our field so exciting." },
+      { type: "h3", text: "Embracing a Growth Mindset" },
+      { type: "p", text: "Continuous learning isn't just about picking up the latest framework; it's about developing a mindset that welcomes new challenges. It's about being comfortable with not knowing everything and having the confidence to figure it out." },
+      { type: "p", text: "I've found that the best way to keep up is to focus on fundamentals. While tools change, the core principles of software engineering, design, and problem-solving remain remarkably stable." },
+      { type: "blockquote", text: "Live as if you were to die tomorrow. Learn as if you were to live forever.", author: "Mahatma Gandhi" },
+      { type: "p", text: "Whether it's reading a technical book, contributing to open source, or building a small side project, every bit of learning compounds over time. The goal isn't to be an expert in everything, but to be a lifelong student of the craft." }
+    ]
+  },
+  {
     id: 10,
     title: "Building a Portfolio That Evolves With You",
     excerpt: "Why a personal site should be a living product—not a static snapshot frozen in time.",
