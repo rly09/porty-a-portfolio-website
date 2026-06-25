@@ -22,6 +22,23 @@ interface Post {
 
 const rawPosts: Post[] = [
   {
+    id: 12,
+    title: "The Quiet Power of Finishing What You Start",
+    excerpt: "Why completion, not ambition, is the true measure of a builder.",
+    date: "June 25, 2026",
+    content: [
+      { type: "p", text: "Every developer has a graveyard of abandoned projects—half-built apps, prototypes that never left the laptop, ideas that felt brilliant at midnight and forgettable by morning. I've got mine too. But over time, I've learned that the real edge isn't in starting more; it's in finishing what matters." },
+      { type: "h3", text: "Why We Abandon Ship" },
+      { type: "p", text: "The novelty wears off. A shinier idea appears. The problem feels harder than expected. Whatever the reason, each unfinished project carries a small cost—not just in time, but in confidence. Finishing teaches you that your effort compounds. Abandoning teaches you that it doesn't." },
+      { type: "p", text: "I started tracking my completion rate deliberately. Not to guilt myself, but to see patterns. I noticed I finish projects that solve a problem I actually have. The ones driven by vanity or trend-chasing rarely make it past week two." },
+      { type: "blockquote", text: "Nothing is more responsible for the good old days than a bad memory.", author: "Franklin Pierce Adams" },
+      { type: "h3", text: "The Discipline of Done" },
+      { type: "p", text: "A finished project rough around the edges is a conversation starter, a learning artifact, and proof that you can execute. An unfinished one is just a footnote. The gap between 'almost done' and 'shipped' is where most of the real learning happens: edge cases, deployment quirks, user feedback." },
+      { type: "p", text: "I've adopted a simple rule: before starting anything new, I ask whether it serves a current goal or solves a current problem. If not, it goes into a 'maybe later' list. That list exists to protect focus, not to create obligation." },
+      { type: "p", text: "Finishing isn't about perfection. It's about respect—for your own time, for the problem you set out to solve, and for the version of yourself that believed this was worth building. Ship it, learn from it, and then decide what comes next." }
+    ]
+  },
+  {
     id: 11,
     title: "The Art of Continuous Learning in Tech",
     excerpt: "How to stay relevant and curious in an industry that never stops moving.",
