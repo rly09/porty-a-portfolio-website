@@ -22,6 +22,23 @@ interface Post {
 
 const rawPosts: Post[] = [
   {
+    id: 14,
+    title: "The Danger of Over-Engineering",
+    excerpt: "When a simple solution becomes a complex system, you've already lost.",
+    date: "July 13, 2026",
+    content: [
+      { type: "p", text: "I once spent three weeks building a custom state management system for a project that needed exactly one shared variable. It had reducers, middleware, devtools integration, and a beautiful API. It also had a bug I couldn't find, and the project never shipped." },
+      { type: "h3", text: "The Seduction of Complexity" },
+      { type: "p", text: "Over-engineering is sneaky. It disguises itself as professionalism. You start by adding 'just in case' layers. Then abstractions for abstractions. Suddenly your 'simple todo app' has seventeen files, four design patterns, and a dependency tree that would make a Fortune 500 app blush." },
+      { type: "p", text: "The real problem isn't the code—it's the cognitive load. Every extra layer is something you or a future teammate has to understand, maintain, and debug. Complexity is a tax you pay forever." },
+      { type: "blockquote", text: "Perfection is achieved not when there is nothing more to add, but when there is nothing left to take away.", author: "Antoine de Saint-Exupéry" },
+      { type: "h3", text: "YAGNI Is a Feature, Not a Limitation" },
+      { type: "p", text: "\"You Ain't Gonna Need It\" sounds lazy until you've maintained a codebase full of things you thought you'd need. Every line of code that doesn't exist is a line that can't break, can't confuse, and can't slow you down." },
+      { type: "p", text: "I've learned to start with the simplest possible solution. Not because I can't build something more sophisticated, but because the simplest working thing teaches you what you actually need. You can always add complexity later when reality demands it." },
+      { type: "p", text: "The best engineers I know are the ones who can resist the urge to build something clever. They build something clear, something that works, and something they can walk away from without a manual." }
+    ]
+  },
+  {
     id: 13,
     title: "The Case for Constraints in Creative Work",
     excerpt: "Why limits are not obstacles—they are the scaffolding for better ideas.",
