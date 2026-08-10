@@ -22,6 +22,40 @@ interface Post {
 
 const rawPosts: Post[] = [
   {
+    id: 16,
+    title: "Writing Is the Best Debugger I Know",
+    excerpt: "How putting thoughts into words surfaces the bugs in your ideas before they reach the code.",
+    date: "August 10, 2026",
+    content: [
+      { type: "p", text: "I used to treat writing as something that only happened after the work was done—a summary, a post-mortem, a blog at the end of a project. But I've learned that writing is one of the most effective debugging tools I own, and I reach for it at the start of a problem, not the end." },
+      { type: "h3", text: "Thoughts Are Fuzzy, Words Are Sharp" },
+      { type: "p", text: "An idea in your head can feel complete while being full of holes. The moment you try to write it down—to explain it clearly to another person—the gaps announce themselves. The vague assumption, the missing step, the contradiction you never noticed. Writing forces those holes into the light." },
+      { type: "p", text: "I've started every serious project by writing a short design note. What am I building? Why? What is the smallest version that works? What could go wrong? Ten minutes of writing surfaces problems that would have taken ten hours of building to discover." },
+      { type: "blockquote", text: "If you can't explain it simply, you don't understand it well enough.", author: "Albert Einstein" },
+      { type: "h3", text: "Docs as a Second Set of Eyes" },
+      { type: "p", text: "Documentation isn't just for other people—it's for your future self. When I write down the decisions I made and why, I'm creating a conversation with the person who will maintain this code six months from now. Most of the time, that person is me, and future-me is always grateful." },
+      { type: "p", text: "This same habit applies beyond code. Writing a blog post about a bug I fixed forces me to understand the fix completely, not just the patch. Explaining an architecture decision clarifies whether I made it for good reasons or for comfort." },
+      { type: "p", text: "So next time you're stuck, don't reach for another dependency. Reach for a blank page. Describe the problem in a few clear sentences. You'll often find the solution sitting right there, hiding between what you meant and what you wrote." }
+    ]
+  },
+  {
+    id: 15,
+    title: "Why I Stopped Chasing Trendy Frameworks",
+    excerpt: "The best tool is the one you already know deeply—not the one everyone is talking about.",
+    date: "July 14, 2026",
+    content: [
+      { type: "p", text: "Every few months, a new JavaScript framework drops and the internet loses its mind. I used to be first in line to try each one. My GitHub became a graveyard of half-finished tutorials and abandoned side projects built on frameworks I abandoned two weeks later." },
+      { type: "h3", text: "The Treadmill of Novelty" },
+      { type: "p", text: "Chasing trends feels productive. You're learning, you're shipping, you're keeping up. But you're also context-switching constantly, forgetting syntax you just memorized, and rebuilding mental models from scratch every time a shiny new API appears." },
+      { type: "p", text: "The real cost isn't the time spent learning—it's the time not spent going deep. Every hour spent evaluating a new framework is an hour not spent mastering the one you already have. Depth beats breadth in building things that last." },
+      { type: "blockquote", text: "Jack of all trades, master of none, though oftentimes better than a master of one.", author: "Traditional proverb" },
+      { type: "h3", text: "Picking a Lane" },
+      { type: "p", text: "I decided to stop optimizing for novelty and start optimizing for depth. I picked a small set of tools—Next.js, Tailwind, Supabase—and committed to learning them inside and out. Not because they're perfect, but because they're good enough, and my familiarity with them makes them powerful." },
+      { type: "p", text: "When you know a tool deeply, you stop fighting it. You know the pitfalls, the hidden features, the workarounds. You move faster not because the tool is faster, but because you've removed the friction between your idea and its execution." },
+      { type: "p", text: "Stop collecting tools. Start mastering them. The best developers I know aren't the ones who've tried everything—they're the ones who can do anything with a few things they truly own." }
+    ]
+  },
+  {
     id: 14,
     title: "The Danger of Over-Engineering",
     excerpt: "When a simple solution becomes a complex system, you've already lost.",
