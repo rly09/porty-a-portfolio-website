@@ -1,0 +1,40 @@
+{
+  "id": 2,
+  "title": "My Process for Turning Ideas into MVPs",
+  "excerpt": "My way from idea → prototype → working product.",
+  "date": "May 28, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "Every great product starts as a messy idea. The difference between a dreamer and a builder is the process of refinement. Here’s how I take a concept from a fleeting thought to a functional Minimum Viable Product (MVP)."
+    },
+    {
+      "type": "h3",
+      "text": "Step 1: Problem Definition"
+    },
+    {
+      "type": "p",
+      "text": "I never start with a feature; I start with a pain point. What is annoying? What takes too long? If I'm building it for myself, I'm the first customer. If I can't explain the problem in one sentence, I haven't defined it well enough."
+    },
+    {
+      "type": "h3",
+      "text": "Step 2: Scoping (The Art of Saying No)"
+    },
+    {
+      "type": "p",
+      "text": "An MVP should be minimal. I list all the \"cool\" features and then cut 80% of them. If the core functionality doesn't provide value on its own, the extra features won't save it. For SyncMind, the core was just \"transfer text between LLMs.\" Everything else came later."
+    },
+    {
+      "type": "h3",
+      "text": "Step 3: Rapid Prototyping"
+    },
+    {
+      "type": "p",
+      "text": "I don't worry about perfect architecture in the first week. I use tools that let me move fast—Flutter for mobile, Next.js for web, and Supabase for the backend. The goal is to see it working on a device as soon as possible."
+    },
+    {
+      "type": "p",
+      "text": "The feedback loop is everything. Once you have an MVP, you're no longer guessing; you're iterating based on reality."
+    }
+  ]
+}

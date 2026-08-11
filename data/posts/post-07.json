@@ -1,0 +1,40 @@
+{
+  "id": 7,
+  "title": "What I Look for Before Starting a New Project",
+  "excerpt": "The checklist I use to decide whether an idea is worth building now.",
+  "date": "June 5, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "Before I start a new project, I try to separate excitement from signal. New ideas are easy to love in the first hour, but a strong project needs a clear problem, a reachable first version, and a reason to keep improving it after the launch energy fades."
+    },
+    {
+      "type": "h3",
+      "text": "A Clear User Pain"
+    },
+    {
+      "type": "p",
+      "text": "The first question is simple: who is this for, and what friction does it remove? If I cannot describe the pain in plain language, I probably do not understand the product yet."
+    },
+    {
+      "type": "h3",
+      "text": "A Small First Version"
+    },
+    {
+      "type": "p",
+      "text": "I also look for a version that can be built quickly without pretending it solves everything. A focused first version gives me something concrete to test, improve, and explain."
+    },
+    {
+      "type": "h3",
+      "text": "Room to Grow"
+    },
+    {
+      "type": "p",
+      "text": "The best ideas have a useful core and a natural path forward. They can start small, but they should not be dead ends. There should be obvious ways to deepen the experience once the foundation works."
+    },
+    {
+      "type": "p",
+      "text": "When an idea passes those checks, I can start with confidence. Not because success is guaranteed, but because the next step is clear enough to build."
+    }
+  ]
+}

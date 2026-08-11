@@ -1,0 +1,36 @@
+{
+  "id": 3,
+  "title": "Building in the Age of AI",
+  "excerpt": "My thoughts on how AI changes software development.",
+  "date": "May 29, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "AI isn't going to replace developers, but developers who use AI will replace those who don't. We are entering a new era of \"Augmented Development\" where the barrier to entry is lower, but the ceiling for quality is higher."
+    },
+    {
+      "type": "h3",
+      "text": "The Shifting Skillset"
+    },
+    {
+      "type": "p",
+      "text": "In the past, knowing syntax was a massive competitive advantage. Today, syntax is a commodity. The real value has shifted to architecture, system design, and prompt engineering. You need to know what to build more than how to type it."
+    },
+    {
+      "type": "p",
+      "text": "I use AI as a high-powered intern. It handles the boilerplate, suggests optimizations, and explains obscure bugs. This frees me up to focus on the user experience and the core logic that makes a product unique."
+    },
+    {
+      "type": "h3",
+      "text": "The Danger of \"Lazy Coding\""
+    },
+    {
+      "type": "p",
+      "text": "The risk is relying too much on generated code without understanding it. If you can't debug what the AI wrote, you don't own the project—it owns you. We must remain the architects, not just the assemblers."
+    },
+    {
+      "type": "p",
+      "text": "The future belongs to the builders who can orchestrate these powerful tools to create experiences that were previously impossible for a single developer to build."
+    }
+  ]
+}

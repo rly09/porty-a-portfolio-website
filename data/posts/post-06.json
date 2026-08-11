@@ -1,0 +1,37 @@
+{
+  "id": 6,
+  "title": "Shipping Small Improvements Every Day",
+  "excerpt": "Why steady, visible progress beats waiting for one perfect release.",
+  "date": "June 4, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "The most reliable way I have found to improve a product is to ship small, useful changes consistently. A tiny improvement that reaches users today teaches more than a large feature that stays unfinished for weeks."
+    },
+    {
+      "type": "p",
+      "text": "Small releases reduce pressure because each decision has a narrower blast radius. If something does not work, it is easier to understand, fix, or roll back. That makes experimentation feel practical instead of risky."
+    },
+    {
+      "type": "h3",
+      "text": "Momentum Comes from Closure"
+    },
+    {
+      "type": "p",
+      "text": "Completing a small slice gives a project rhythm. It turns vague ambition into a working artifact, and that artifact becomes the next thing to refine. The habit matters as much as the feature."
+    },
+    {
+      "type": "p",
+      "text": "This approach also protects focus. Instead of trying to redesign an entire system at once, I ask what one change would make the experience clearer, faster, or more useful today."
+    },
+    {
+      "type": "blockquote",
+      "text": "Progress compounds when you make it easy to finish.",
+      "author": "Personal note"
+    },
+    {
+      "type": "p",
+      "text": "The goal is not to move carelessly. It is to keep the feedback loop alive so quality improves through contact with reality."
+    }
+  ]
+}

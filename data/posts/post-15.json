@@ -1,0 +1,45 @@
+{
+  "id": 15,
+  "title": "Why I Stopped Chasing Trendy Frameworks",
+  "excerpt": "The best tool is the one you already know deeply—not the one everyone is talking about.",
+  "date": "July 14, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "Every few months, a new JavaScript framework drops and the internet loses its mind. I used to be first in line to try each one. My GitHub became a graveyard of half-finished tutorials and abandoned side projects built on frameworks I abandoned two weeks later."
+    },
+    {
+      "type": "h3",
+      "text": "The Treadmill of Novelty"
+    },
+    {
+      "type": "p",
+      "text": "Chasing trends feels productive. You're learning, you're shipping, you're keeping up. But you're also context-switching constantly, forgetting syntax you just memorized, and rebuilding mental models from scratch every time a shiny new API appears."
+    },
+    {
+      "type": "p",
+      "text": "The real cost isn't the time spent learning—it's the time not spent going deep. Every hour spent evaluating a new framework is an hour not spent mastering the one you already have. Depth beats breadth in building things that last."
+    },
+    {
+      "type": "blockquote",
+      "text": "Jack of all trades, master of none, though oftentimes better than a master of one.",
+      "author": "Traditional proverb"
+    },
+    {
+      "type": "h3",
+      "text": "Picking a Lane"
+    },
+    {
+      "type": "p",
+      "text": "I decided to stop optimizing for novelty and start optimizing for depth. I picked a small set of tools—Next.js, Tailwind, Supabase—and committed to learning them inside and out. Not because they're perfect, but because they're good enough, and my familiarity with them makes them powerful."
+    },
+    {
+      "type": "p",
+      "text": "When you know a tool deeply, you stop fighting it. You know the pitfalls, the hidden features, the workarounds. You move faster not because the tool is faster, but because you've removed the friction between your idea and its execution."
+    },
+    {
+      "type": "p",
+      "text": "Stop collecting tools. Start mastering them. The best developers I know aren't the ones who've tried everything—they're the ones who can do anything with a few things they truly own."
+    }
+  ]
+}

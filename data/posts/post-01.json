@@ -1,0 +1,37 @@
+{
+  "id": 1,
+  "title": "Why I Build Before I Feel Ready",
+  "excerpt": "My approach to learning by building real products instead of waiting until I've mastered every technology.",
+  "date": "May 27, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "There's a common trap in software engineering: the \"Learning Loop.\" It's that feeling that you need to watch just one more tutorial, read one more documentation page, or finish one more course before you can start building something real."
+    },
+    {
+      "type": "p",
+      "text": "I've found that the most effective way to learn is to dive into the deep end before you're ready. When you build something real, you encounter real problems. You don't just learn how to use a tool; you learn why it exists and when it fails."
+    },
+    {
+      "type": "h3",
+      "text": "The \"Build-First\" Philosophy"
+    },
+    {
+      "type": "p",
+      "text": "When I started Bolo AI, I didn't know everything about Supabase or complex Android automation. But I had a goal: a voice assistant that actually worked. Every roadblock became a lesson. Instead of theoretical knowledge, I gained functional expertise."
+    },
+    {
+      "type": "p",
+      "text": "Building before you're ready forces you to be resourceful. It teaches you how to read documentation for specific solutions, how to debug effectively, and most importantly, how to finish things."
+    },
+    {
+      "type": "blockquote",
+      "text": "The best way to predict the future is to invent it.",
+      "author": "Alan Kay"
+    },
+    {
+      "type": "p",
+      "text": "Don't wait for permission or perfection. Just start building. The mastery will come from the wreckage of your first few attempts."
+    }
+  ]
+}

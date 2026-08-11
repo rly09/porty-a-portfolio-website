@@ -1,0 +1,28 @@
+{
+  "id": 8,
+  "title": "Refining the User Experience: Small Touches, Big Impact",
+  "excerpt": "How minor interface adjustments can significantly improve how users feel about a product.",
+  "date": "June 8, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "Often, the difference between a good product and a great one lies in the details that users might not even consciously notice. Micro-interactions, subtle animations, and thoughtful typography all contribute to a sense of polish and care."
+    },
+    {
+      "type": "h3",
+      "text": "The Power of Micro-interactions"
+    },
+    {
+      "type": "p",
+      "text": "A gentle bounce when a list reaches the end, a smooth transition between states, or a well-timed haptic response—these small moments provide feedback and delight. They make the digital feel tangible."
+    },
+    {
+      "type": "p",
+      "text": "In my recent work on Porty, I focused on these tiny transitions. By ensuring that every action has a corresponding visual reaction, the entire experience feels more responsive and alive."
+    },
+    {
+      "type": "p",
+      "text": "Never underestimate the impact of 'invisible' design. When something works perfectly, users don't think about the design; they just feel empowered."
+    }
+  ]
+}

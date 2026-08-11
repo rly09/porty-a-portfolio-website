@@ -1,0 +1,28 @@
+{
+  "id": 5,
+  "title": "Optimizing Performance in Modern Web Apps",
+  "excerpt": "Techniques for building lightning-fast user experiences.",
+  "date": "June 2, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "Performance is a feature. In an era where users expect instant feedback, even a few hundred milliseconds of delay can lead to a significant drop in engagement. Optimizing performance isn't just a technical task; it's a core part of the user experience."
+    },
+    {
+      "type": "h3",
+      "text": "Beyond the Basics"
+    },
+    {
+      "type": "p",
+      "text": "While minification and image optimization are standard, modern web apps require more sophisticated techniques. Server-side rendering (SSR), static site generation (SSG), and edge computing are now essential tools in a developer's arsenal."
+    },
+    {
+      "type": "p",
+      "text": "I've been experimenting with partial hydration and streaming to deliver content faster. By only loading the JavaScript that's absolutely necessary for the current view, we can significantly reduce the Time to Interactive (TTI)."
+    },
+    {
+      "type": "p",
+      "text": "Every millisecond counts. As builders, we have a responsibility to respect our users' time and bandwidth by delivering the most efficient experiences possible."
+    }
+  ]
+}

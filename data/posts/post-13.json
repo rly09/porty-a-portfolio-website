@@ -1,0 +1,45 @@
+{
+  "id": 13,
+  "title": "The Case for Constraints in Creative Work",
+  "excerpt": "Why limits are not obstacles—they are the scaffolding for better ideas.",
+  "date": "July 4, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "When I first started building software, I believed more freedom meant better results. More tools, more features, more time—surely that would lead to greatness. But the opposite turned out to be true. Some of my best work emerged not from unlimited options, but from deliberate constraints."
+    },
+    {
+      "type": "h3",
+      "text": "Why Constraints Work"
+    },
+    {
+      "type": "p",
+      "text": "Constraints force decisions. When you can only pick three features, you have to choose the ones that matter most. When you have a week instead of a month, you cut the fluff. Limitations don't stifle creativity—they focus it. They act as a filter, removing the noise so the signal can shine through."
+    },
+    {
+      "type": "p",
+      "text": "I started applying this to my own process. I give myself strict timeboxes for side projects. I limit the color palette. I pick a single interaction pattern and commit to it. Every constraint becomes a puzzle: how do I make the most of what I have?"
+    },
+    {
+      "type": "blockquote",
+      "text": "Art lives from constraints and dies from freedom.",
+      "author": "George Leonard"
+    },
+    {
+      "type": "h3",
+      "text": "Applying Constraints Deliberately"
+    },
+    {
+      "type": "p",
+      "text": "This isn't about making things harder for the sake of it. It's about being intentional with what you allow into a project. A monochrome design can be more striking than a rainbow. A single-page app can be more focused than a sprawling dashboard. One well-crafted component can do the work of ten mediocre ones."
+    },
+    {
+      "type": "p",
+      "text": "The next time you feel stuck, try adding a constraint instead of removing one. You might be surprised at how much clearer the path becomes."
+    },
+    {
+      "type": "p",
+      "text": "Constraints are not the enemy of creativity—they are its collaborator. The fewer options you have, the more each one matters. And when each decision matters, you start making better ones."
+    }
+  ]
+}
