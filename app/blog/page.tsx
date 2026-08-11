@@ -22,6 +22,23 @@ interface Post {
 
 const rawPosts: Post[] = [
   {
+    id: 17,
+    title: "The Art of Writing Code for Humans First",
+    excerpt: "Computers only execute code—humans have to read, maintain, and evolve it. Why readability is your strongest architecture decision.",
+    date: "August 11, 2026",
+    content: [
+      { type: "p", text: "Early in my engineering journey, I thought good code meant clever code. One-liners, dense abstractions, and tricks that compressed ten lines into one felt like superpowers. But over time, I realized that code is read far more often than it is written, and cleverness is usually tech debt in disguise." },
+      { type: "h3", text: "Code as Communication" },
+      { type: "p", text: "When you write code, you are not just instructing a compiler or runtime—you are writing down instructions for your future self and your teammates. If a colleague (or future-you) has to pause for five minutes to untangle a clever expression, the time saved writing it has been lost tenfold." },
+      { type: "p", text: "Clean, intentional code uses straightforward naming, obvious data flows, and predictable structure. When the intent of a module is immediately apparent, debugging becomes trivial, refactoring becomes safe, and onboarding new contributors happens seamlessly." },
+      { type: "blockquote", text: "Any fool can write code that a computer can understand. Good programmers write code that humans can understand.", author: "Martin Fowler" },
+      { type: "h3", text: "Optimizing for Mental Models" },
+      { type: "p", text: "Software design is ultimately about managing cognitive load. Every unexpected side effect, global state mutation, or cryptic function parameter adds weight to the mental model you must hold in your head while working." },
+      { type: "p", text: "By keeping functions single-purposed, naming variables based on their business domain rather than technical type, and favoring explicit logic over implicit magic, you keep the mental model light. That lightness translates directly into speed and confidence when introducing new features." },
+      { type: "p", text: "Write for the human sitting across from you—or the version of yourself reading this file six months from now. They will thank you for choosing clarity over cleverness." }
+    ]
+  },
+  {
     id: 16,
     title: "Writing Is the Best Debugger I Know",
     excerpt: "How putting thoughts into words surfaces the bugs in your ideas before they reach the code.",
