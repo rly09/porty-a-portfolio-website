@@ -177,6 +177,12 @@ Output raw JSON only.
             raw_content = res_json["choices"][0]["message"]["content"].strip()
     except urllib.error.HTTPError as e:
         err_text = e.read().decode('utf-8', errors='ignore')
+        if e.code == 403 and "error code: 1010" in err_text.lower():
+            print(
+                "WARNING: Groq API access is blocked from this runner (HTTP 403, error code 1010). "
+                "Skipping blog generation for today without failing the workflow."
+            )
+            sys.exit(0)
         print(f"Error: Groq API call failed with status {e.code}: {err_text}", file=sys.stderr)
         sys.exit(1)
     except Exception as e:
