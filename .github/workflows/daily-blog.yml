@@ -45,3 +45,15 @@ jobs:
           else
             echo "No new blog generated today (or blog for today already exists). Skipping git commit."
           fi
+
+      - name: Trigger Vercel redeploy
+        if: success()
+        run: |
+          if [ -n "$VERCEL_DEPLOY_HOOK_URL" ]; then
+            curl -s -X POST "$VERCEL_DEPLOY_HOOK_URL"
+            echo "Triggered Vercel redeploy successfully."
+          else
+            echo "VERCEL_DEPLOY_HOOK_URL secret not set — skipping redeploy trigger."
+          fi
+        env:
+          VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
