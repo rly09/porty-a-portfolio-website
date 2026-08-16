@@ -1,0 +1,29 @@
+{
+  "id": 18,
+  "title": "Clear, engaging title (5 to 10 words)",
+  "excerpt": "A compelling 1 to 2 sentence summary of the article",
+  "date": "August 16, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "First paragraph text..."
+    },
+    {
+      "type": "h3",
+      "text": "Subheading text"
+    },
+    {
+      "type": "p",
+      "text": "Second paragraph text..."
+    },
+    {
+      "type": "blockquote",
+      "text": "A notable quote or takeaway",
+      "author": "Optional author or leave out"
+    },
+    {
+      "type": "p",
+      "text": "Concluding paragraph text..."
+    }
+  ]
+}
