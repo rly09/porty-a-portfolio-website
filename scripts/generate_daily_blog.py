@@ -18,12 +18,12 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 POSTS_DIR = os.path.join(PROJECT_ROOT, "data", "posts")
 
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
-DEFAULT_MODEL = "nvidia/nemotron-3.5-lightning:free"
+DEFAULT_MODEL = "dots-studio/dots-3-note-preview:free"
 # Fallback free models in priority order (if primary is unavailable)
 FREE_MODEL_FALLBACKS = [
-    "nvidia/nemotron-3.5-lightning:free",
-    "poolside/laguna-s-2.1:free",
     "dots-studio/dots-3-note-preview:free",
+    "poolside/laguna-s-2.1:free",
+    "nvidia/nemotron-3.5-lightning:free",
 ]
 
 PROJECT_CONTEXT = """
@@ -136,23 +136,22 @@ REQUIREMENTS FOR THE BLOG POST:
 5. STRICT JSON OUTPUT FORMAT ONLY:
 Return ONLY a raw JSON object with NO markdown wrapping, NO markdown ```json blocks, NO commentary before or after.
 
-JSON SCHEMA REQUIREMENT:
+EXAMPLE of correctly filled-in output (your topic and content must be completely different):
 {{
-  "id": {next_id},
-  "title": "Clear, engaging title (5 to 10 words)",
-  "excerpt": "A compelling 1 to 2 sentence summary of the article",
-  "date": "{today_formatted}",
+  "id": 99,
+  "title": "Why State Management Matters More Than Your Framework",
+  "excerpt": "Frameworks come and go, but how you manage state defines whether your app scales or crumbles.",
+  "date": "August 16, 2026",
   "content": [
-    {{ "type": "p", "text": "First paragraph text..." }},
-    {{ "type": "h3", "text": "Subheading text" }},
-    {{ "type": "p", "text": "Second paragraph text..." }},
-    {{ "type": "blockquote", "text": "A notable quote or takeaway", "author": "Optional author or leave out" }},
-    {{ "type": "p", "text": "Concluding paragraph text..." }}
+    {{"type": "p", "text": "Every major rewrite I have seen had one thing in common — state was scattered everywhere."}},
+    {{"type": "h3", "text": "The Hidden Cost of Implicit State"}},
+    {{"type": "p", "text": "When state lives in props, local variables, and global singletons simultaneously, no one owns it. Bugs become impossible to trace."}},
+    {{"type": "blockquote", "text": "Make state explicit or it will make your bugs implicit.", "author": "Unknown"}},
+    {{"type": "p", "text": "Patterns like BLoC in Flutter or Zustand in React succeed because they enforce a single source of truth."}}
   ]
 }}
 
-Provide between 4 to 8 content blocks in total for a complete, satisfying read.
-Output raw JSON only.
+Now write a BRAND NEW original blog post with id={next_id} and date="{today_formatted}". Write real content — do NOT copy the example above. Output raw JSON only.
 """
 
     payload = {
