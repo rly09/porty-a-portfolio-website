@@ -34,13 +34,15 @@ jobs:
           git config --local user.name "GitHub Action"
           
           if [ -n "$(git status --porcelain data/posts)" ]; then
+            # Pull latest remote changes BEFORE committing so our push never gets rejected
+            git pull --rebase origin main
+            
             git add data/posts
             
             # Extract title of the newly generated post for the commit message
             BLOG_TITLE=$(python3 -c "import json, glob, os; files = sorted(glob.glob('data/posts/*.json'), key=os.path.getmtime); print(json.load(open(files[-1]))['title']) if files else print('new post')")
             
             git commit -m "content: add daily blog - ${BLOG_TITLE}"
-            git pull --rebase origin main
             git push
             echo "Successfully committed and pushed daily blog post."
           else
