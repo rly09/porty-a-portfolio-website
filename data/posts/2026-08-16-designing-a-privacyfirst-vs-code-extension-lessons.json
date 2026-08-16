@@ -1,0 +1,69 @@
+{
+  "id": 18,
+  "title": "Designing a Privacy‑First VS Code Extension: Lessons from CodeLoom Explorer",
+  "excerpt": "Creating a tool that visualizes code dependencies without leaving the editor required balancing AST parsing, React Flow, and a strict no‑network policy.",
+  "date": "August 16, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "When I started building CodeLoom Explorer, my goal was simple: give developers a quick way to see how files in a project relate to each other, without having to leave the editor or trust a third‑party service."
+    },
+    {
+      "type": "h3",
+      "text": "Why privacy mattered"
+    },
+    {
+      "type": "p",
+      "text": "I wanted the extension to work entirely offline. That meant no sending file contents to a remote server, no API keys, and no telemetry. It also meant I had to handle parsing on the client side."
+    },
+    {
+      "type": "p",
+      "text": "I used TypeScript and the compiler API to build an AST for each file, then walked the tree to extract import/export relationships."
+    },
+    {
+      "type": "h3",
+      "text": "Rendering the graph"
+    },
+    {
+      "type": "p",
+      "text": "For the visual part, I chose React Flow. It gave me out‑of‑the‑box pan, zoom, and node dragging, which let me focus on the data model rather than canvas drawing."
+    },
+    {
+      "type": "p",
+      "text": "Each file became a node, and each import became a directed edge. To keep the graph readable, I added clustering for directories and a search box that highlights related nodes."
+    },
+    {
+      "type": "h3",
+      "text": "Performance considerations"
+    },
+    {
+      "type": "p",
+      "text": "Parsing every file on every save would be too slow for large repos. I introduced a watcher that only re‑parses changed files and caches the AST in IndexedDB."
+    },
+    {
+      "type": "p",
+      "text": "When the graph grows beyond a few thousand nodes, I switch to a simplified view that groups files by folder, preserving the overall structure without overwhelming the UI."
+    },
+    {
+      "type": "blockquote",
+      "text": "The best developer tools are invisible until you need them, then they feel like they were always there.",
+      "author": "Unknown"
+    },
+    {
+      "type": "h3",
+      "text": "Lessons learned"
+    },
+    {
+      "type": "p",
+      "text": "The biggest surprise was how often developers ask for a 'quick overview' but then need to drill down into specific modules. The extension's filtering and focus modes turned out to be more valuable than the initial graph view."
+    },
+    {
+      "type": "p",
+      "text": "I also learned that building for VS Code means respecting its extension model: keep the extension lightweight, handle activation events carefully, and always provide a way to disable the feature if it becomes distracting."
+    },
+    {
+      "type": "p",
+      "text": "Looking ahead, I'm exploring adding a 'dependency impact' view that predicts which files are most likely to break when a change is made, using simple static analysis."
+    }
+  ]
+}
