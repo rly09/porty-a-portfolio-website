@@ -168,7 +168,8 @@ Output raw JSON only.
             }
         ],
         "temperature": 0.7,
-        "max_tokens": 2000
+        "max_tokens": 2000,
+        "include_reasoning": False  # Prevent reasoning models from dumping chain-of-thought into content
     }
 
     headers = {
@@ -213,11 +214,19 @@ Output raw JSON only.
         print(f"Error: All models failed. Last error: {last_error}", file=sys.stderr)
         sys.exit(1)
 
-    # Clean potential markdown wrapping around JSON
+    # Robustly extract the JSON object from the response.
+    # Some reasoning models prepend thinking text before the JSON even with
+    # include_reasoning=False, so we find the first '{' and last '}'.
     cleaned_json_str = raw_content
-    if cleaned_json_str.startswith("```"):
-        cleaned_json_str = re.sub(r"^```(?:json)?\n?", "", cleaned_json_str)
-        cleaned_json_str = re.sub(r"\n?```$", "", cleaned_json_str)
+    # Strip markdown code fences if present
+    if "```" in cleaned_json_str:
+        cleaned_json_str = re.sub(r"^```(?:json)?\n?", "", cleaned_json_str, flags=re.MULTILINE)
+        cleaned_json_str = re.sub(r"\n?```", "", cleaned_json_str)
+    # Extract the JSON object by finding outermost braces
+    start = cleaned_json_str.find("{")
+    end = cleaned_json_str.rfind("}")
+    if start != -1 and end != -1 and end > start:
+        cleaned_json_str = cleaned_json_str[start:end + 1]
     cleaned_json_str = cleaned_json_str.strip()
 
     # Parse and validate JSON structure
