@@ -167,7 +167,7 @@ Now write a BRAND NEW original blog post with id={next_id} and date="{today_form
             }
         ],
         "temperature": 0.7,
-        "max_tokens": 2000,
+        "max_tokens": 4000,
         "include_reasoning": False  # Prevent reasoning models from dumping chain-of-thought into content
     }
 

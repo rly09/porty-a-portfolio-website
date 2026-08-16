@@ -25,7 +25,7 @@ jobs:
       - name: Generate daily blog post
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL || 'meta-llama/llama-3.3-70b-instruct:free' }}
+          OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL }}
         run: python scripts/generate_daily_blog.py
 
       - name: Commit and push changes
