@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 Automated Daily Blog Post Generator for Developer Portfolio
-Uses Groq API to generate exactly one high-quality, non-duplicate technical blog post per day.
+Uses OpenRouter API to generate exactly one high-quality, non-duplicate technical blog post per day.
+OpenRouter proxies requests through IPs that are not blocked by GitHub Actions runners.
 """
 
 import json
@@ -16,8 +17,8 @@ from datetime import datetime
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 POSTS_DIR = os.path.join(PROJECT_ROOT, "data", "posts")
 
-GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
-DEFAULT_MODEL = "llama-3.3-70b-versatile"
+OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
+DEFAULT_MODEL = "meta-llama/llama-3.3-70b-instruct:free"
 
 PROJECT_CONTEXT = """
 Portfolio Owner: Roshan Lal Yogi (rly09)
@@ -78,12 +79,12 @@ def format_today_date():
     return now.strftime(f"%B {day}, %Y")
 
 def main():
-    api_key = os.environ.get("GROQ_API_KEY")
+    api_key = os.environ.get("OPENROUTER_API_KEY")
     if not api_key:
-        print("Error: GROQ_API_KEY environment variable is not set.", file=sys.stderr)
+        print("Error: OPENROUTER_API_KEY environment variable is not set.", file=sys.stderr)
         sys.exit(1)
 
-    model_name = os.environ.get("GROQ_MODEL", DEFAULT_MODEL)
+    model_name = os.environ.get("OPENROUTER_MODEL", DEFAULT_MODEL)
     today_formatted = format_today_date()
     today_iso = datetime.now().strftime("%Y-%m-%d")
 
@@ -164,11 +165,13 @@ Output raw JSON only.
 
     headers = {
         "Content-Type": "application/json",
-        "Authorization": f"Bearer {api_key}"
+        "Authorization": f"Bearer {api_key}",
+        "HTTP-Referer": "https://github.com/rly09/porty-a-portfolio-website",
+        "X-Title": "Porty Daily Blog Generator"
     }
 
-    print("Requesting blog post generation from Groq API...")
-    req = urllib.request.Request(GROQ_API_URL, data=json.dumps(payload).encode("utf-8"), headers=headers)
+    print("Requesting blog post generation from OpenRouter API...")
+    req = urllib.request.Request(OPENROUTER_API_URL, data=json.dumps(payload).encode("utf-8"), headers=headers)
 
     try:
         with urllib.request.urlopen(req, timeout=60) as response:
@@ -177,16 +180,10 @@ Output raw JSON only.
             raw_content = res_json["choices"][0]["message"]["content"].strip()
     except urllib.error.HTTPError as e:
         err_text = e.read().decode('utf-8', errors='ignore')
-        if e.code == 403 and "error code: 1010" in err_text.lower():
-            print(
-                "WARNING: Groq API access is blocked from this runner (HTTP 403, error code 1010). "
-                "Skipping blog generation for today without failing the workflow."
-            )
-            sys.exit(0)
-        print(f"Error: Groq API call failed with status {e.code}: {err_text}", file=sys.stderr)
+        print(f"Error: OpenRouter API call failed with status {e.code}: {err_text}", file=sys.stderr)
         sys.exit(1)
     except Exception as e:
-        print(f"Error calling Groq API: {e}", file=sys.stderr)
+        print(f"Error calling OpenRouter API: {e}", file=sys.stderr)
         sys.exit(1)
 
     # Clean potential markdown wrapping around JSON
