@@ -18,7 +18,13 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 POSTS_DIR = os.path.join(PROJECT_ROOT, "data", "posts")
 
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
-DEFAULT_MODEL = "meta-llama/llama-3.3-70b-instruct:free"
+DEFAULT_MODEL = "nvidia/nemotron-3.5-lightning:free"
+# Fallback free models in priority order (if primary is unavailable)
+FREE_MODEL_FALLBACKS = [
+    "nvidia/nemotron-3.5-lightning:free",
+    "poolside/laguna-s-2.1:free",
+    "dots-studio/dots-3-note-preview:free",
+]
 
 PROJECT_CONTEXT = """
 Portfolio Owner: Roshan Lal Yogi (rly09)
@@ -85,6 +91,8 @@ def main():
         sys.exit(1)
 
     model_name = os.environ.get("OPENROUTER_MODEL", DEFAULT_MODEL)
+    # Build the ordered list of models to try
+    models_to_try = [model_name] + [m for m in FREE_MODEL_FALLBACKS if m != model_name]
     today_formatted = format_today_date()
     today_iso = datetime.now().strftime("%Y-%m-%d")
 
@@ -171,19 +179,38 @@ Output raw JSON only.
     }
 
     print("Requesting blog post generation from OpenRouter API...")
-    req = urllib.request.Request(OPENROUTER_API_URL, data=json.dumps(payload).encode("utf-8"), headers=headers)
 
-    try:
-        with urllib.request.urlopen(req, timeout=60) as response:
-            res_body = response.read().decode("utf-8")
-            res_json = json.loads(res_body)
-            raw_content = res_json["choices"][0]["message"]["content"].strip()
-    except urllib.error.HTTPError as e:
-        err_text = e.read().decode('utf-8', errors='ignore')
-        print(f"Error: OpenRouter API call failed with status {e.code}: {err_text}", file=sys.stderr)
-        sys.exit(1)
-    except Exception as e:
-        print(f"Error calling OpenRouter API: {e}", file=sys.stderr)
+    last_error = None
+    raw_content = None
+    for attempt_model in models_to_try:
+        print(f"Trying model: {attempt_model}")
+        payload["model"] = attempt_model
+        req = urllib.request.Request(OPENROUTER_API_URL, data=json.dumps(payload).encode("utf-8"), headers=headers)
+        try:
+            with urllib.request.urlopen(req, timeout=60) as response:
+                res_body = response.read().decode("utf-8")
+                res_json = json.loads(res_body)
+                # Check for model-level error embedded in response
+                if "error" in res_json:
+                    err_msg = res_json["error"].get("message", str(res_json["error"]))
+                    print(f"  Model {attempt_model} returned error: {err_msg}")
+                    last_error = err_msg
+                    continue
+                raw_content = res_json["choices"][0]["message"]["content"].strip()
+                print(f"  Success with model: {attempt_model}")
+                break
+        except urllib.error.HTTPError as e:
+            err_text = e.read().decode('utf-8', errors='ignore')
+            print(f"  Model {attempt_model} failed with HTTP {e.code}: {err_text[:200]}")
+            last_error = err_text
+            continue
+        except Exception as e:
+            print(f"  Model {attempt_model} failed: {e}")
+            last_error = str(e)
+            continue
+
+    if raw_content is None:
+        print(f"Error: All models failed. Last error: {last_error}", file=sys.stderr)
         sys.exit(1)
 
     # Clean potential markdown wrapping around JSON
