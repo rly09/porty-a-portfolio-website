@@ -1,0 +1,57 @@
+{
+  "id": 20,
+  "title": "Pragmatic AI: Integrating LLMs into Existing Apps Without Rewriting Everything",
+  "excerpt": "You don't need to rebuild your product to add intelligence. Here's how to layer LLMs onto existing architectures.",
+  "date": "August 19, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "The AI hype cycle has convinced a lot of teams that adding intelligence means tearing down the existing system and starting from scratch with a new stack. I've seen this happen — and it almost always ends in a rewrite that delivers nothing but technical debt. The truth is, you can bolt LLM capabilities onto a mature application without breaking what already works. The key is to treat AI as a layer, not a foundation."
+    },
+    {
+      "type": "h3",
+      "text": "The Adapter Pattern for Legacy Systems"
+    },
+    {
+      "type": "p",
+      "text": "When I worked on Chanakya, the legal intelligence platform, we had a working Flutter frontend and a FastAPI backend. Adding legal outcome prediction didn't require a redesign; it required an adapter. We built a service that took existing case data, transformed it into the vector embeddings our FAISS index expected, and returned predictions in the format the UI already understood. The core application never changed. The AI layer just spoke the same language."
+    },
+    {
+      "type": "h3",
+      "text": "Start with a Single, Boring Use Case"
+    },
+    {
+      "type": "p",
+      "text": "The most successful AI integrations I've seen are the ones that solve a specific, annoying problem. Not 'make the whole app smarter,' but 'automate this one report generation' or 'summarize this long conversation.' Bolo AI started as a voice assistant for device automation because controlling lights and fans with voice was a concrete problem, not an AI fantasy. Pick a use case that has clear inputs and outputs, and you'll ship faster."
+    },
+    {
+      "type": "h3",
+      "text": "Data is the Real Bottleneck"
+    },
+    {
+      "type": "p",
+      "text": "LLMs are dumb without context. The hardest part isn't the model — it's getting the right data into the prompt without leaking sensitive information or blowing up token limits. RAG (Retrieval-Augmented Generation) isn't a buzzword; it's a necessity. In Chanakya, we used FAISS to retrieve relevant historical cases before sending them to the LLM. This kept the context window small and the responses grounded. If your integration requires scraping the entire database into the prompt, you're doing it wrong."
+    },
+    {
+      "type": "blockquote",
+      "text": "AI is only as good as the data you feed it.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "h3",
+      "text": "Design for Human Oversight"
+    },
+    {
+      "type": "p",
+      "text": "Fully automated AI decisions are a recipe for disaster, especially in domains like legal or healthcare. Always design for the human-in-the-loop. Let the AI suggest, but keep the final action reversible. In Bolo AI, voice commands are confirmed before executing critical actions like turning off the main light. This simple friction saved users from accidental automation. Treat AI as a co-pilot, not an autopilot."
+    },
+    {
+      "type": "h3",
+      "text": "Incremental Beats Flashy"
+    },
+    {
+      "type": "p",
+      "text": "The temptation to build a monolithic AI feature that does everything is strong, but it's usually the fastest path to failure. Start with a small, isolated integration. Measure its impact. Iterate. The apps that survive are the ones that evolve their intelligence gradually, alongside their users. You don't need to be the next ChatGPT. You just need to be 10% more useful than you were yesterday."
+    }
+  ]
+}
