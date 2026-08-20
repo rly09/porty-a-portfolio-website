@@ -1,0 +1,29 @@
+{
+  "id": 21,
+  "title": "State Management with Riverpod: Patterns That Scaled My Apps",
+  "excerpt": "How Riverpod's provider architecture helped me untangle complex UI state in Flutter apps, from prototype to production.",
+  "date": "August 20, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "In any non‑trivial Flutter app, state is the hidden dependency that ties views together. When I started building ROT, a screen‑time tracker with multiple dashboards, I quickly realized that a naive approach — storing everything in a single Bloc or a handful of ChangeNotifiers — would become a maintenance nightmare."
+    },
+    {
+      "type": "h3",
+      "text": "Separating Concerns with Providers"
+    },
+    {
+      "type": "p",
+      "text": "Riverpod's provider model let me split the domain into focused units: a ScreenTimeRepository provider, a WeeklyStats state provider, and a GoalAlert provider that listens to changes. Each provider owns its lifecycle, so I could unit‑test the repository without touching the UI, and the UI could simply watch the relevant provider without knowing where the data came from."
+    },
+    {
+      "type": "blockquote",
+      "text": "A well‑scoped provider is a contract: it tells you what can change, not how it changes.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "By the time I added the accountability features, the architecture had already proven itself. Adding a new screen required only a few lines of provider definitions, and the existing UI automatically re‑rendered when the underlying state changed. The result was a codebase that stayed readable even as the feature set grew."
+    }
+  ]
+}
