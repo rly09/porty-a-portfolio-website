@@ -1,0 +1,41 @@
+{
+  "id": 22,
+  "title": "Local-First AI: Designing Mobile Apps that Think Offline",
+  "excerpt": "Treating the device as a first-class citizen rather than a dumb terminal is the key to building responsive, reliable AI features on mobile.",
+  "date": "August 22, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "When building Bolo AI, a voice assistant and device automation platform, I quickly realized that relying solely on cloud-based LLM APIs for state and conversation history was a fragile strategy. Users expect voice assistants and smart home automations to respond instantly, even when their device is on a shaky network or completely offline. Treating the device as a first-class citizen rather than a dumb terminal is the key to building responsive, reliable AI features."
+    },
+    {
+      "type": "h3",
+      "text": "The Local Database as a Source of Truth"
+    },
+    {
+      "type": "p",
+      "text": "In Flutter, choosing the right local storage solution dictates how you handle AI state. For Bolo AI, using HiveDB to store conversation threads, device states, and cached LLM responses locally allowed us to read and write data in milliseconds. By keeping the local Hive store as the single source of truth for the UI, we eliminated the jittery behavior that comes from waiting for network round-trips. The role of Supabase in this architecture is not to drive the UI in real-time, but to act as a long-term cloud backup and synchronization layer."
+    },
+    {
+      "type": "blockquote",
+      "text": "Offline isn't a failure mode; it's the primary mode for millions of users on the go.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "h3",
+      "text": "Syncing Local AI State with Cloud Backends"
+    },
+    {
+      "type": "p",
+      "text": "The real challenge lies in synchronizing local AI interactions with cloud backends without creating race conditions or duplicate writes. When a user interacts with the voice assistant offline, the conversation is queued in Hive. Once the device reconnects, we use a background sync mechanism to push these interactions to the Supabase Postgres database. On the backend, FastAPI processes these queued events, updating the user's long-term profile and preferences. This local-first, cloud-sync pattern ensures that the user's AI experience is continuous, regardless of network fluctuations."
+    },
+    {
+      "type": "h3",
+      "text": "Optimizing AI Inference with Local Caching"
+    },
+    {
+      "type": "p",
+      "text": "For AI practitioners, reducing latency often means minimizing the number of expensive LLM API calls. In projects like Chanakya, which predicts legal outcomes using historical case data, we leveraged FAISS on the backend to perform fast vector similarity searches. We can take this a step further on mobile by caching the most common query embeddings or even running lightweight ONNX models locally. By pre-computing vector embeddings and storing them in Hive, the mobile app can retrieve relevant context instantly, only calling the cloud-based Gemini or LLM APIs when absolutely necessary. This hybrid approach drastically cuts API costs while preserving the feeling of instant, intelligent interaction."
+    }
+  ]
+}
