@@ -1,0 +1,57 @@
+{
+  "id": 23,
+  "title": "Inside Bolo AI: Building a Voice Assistant with Flutter and Gemini",
+  "excerpt": "How I combined Flutter, Supabase, and Gemini to create a voice assistant that automates devices.",
+  "date": "August 23, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "When I started building Bolo AI, the goal was simple: let users control their smart devices using natural language, without juggling multiple apps."
+    },
+    {
+      "type": "h3",
+      "text": "Capturing Voice Input"
+    },
+    {
+      "type": "p",
+      "text": "I used Flutter's microphone plugin to capture audio, then converted it to text with a lightweight speech‑to‑text model running locally. This kept latency low and respected privacy."
+    },
+    {
+      "type": "h3",
+      "text": "Leveraging Gemini for Intent Recognition"
+    },
+    {
+      "type": "p",
+      "text": "The transcribed text is sent to Gemini, which returns a structured intent. I designed a prompt that asks for JSON output, making parsing straightforward."
+    },
+    {
+      "type": "h3",
+      "text": "Storing Context with Supabase"
+    },
+    {
+      "type": "p",
+      "text": "Supabase stores conversation history, allowing the assistant to reference previous commands. Row‑level security ensures each user's data remains isolated."
+    },
+    {
+      "type": "h3",
+      "text": "Device Automation via HiveDB"
+    },
+    {
+      "type": "p",
+      "text": "For offline capability, I cached device states in HiveDB. When a command arrives, the app first checks the local cache, then syncs with the cloud when connectivity returns."
+    },
+    {
+      "type": "blockquote",
+      "text": "The best voice assistants feel invisible.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "h3",
+      "text": "Lessons on Latency and Reliability"
+    },
+    {
+      "type": "p",
+      "text": "I learned that even a 200‑millisecond delay can break the conversational flow. By pre‑warming the Gemini client and batching small requests, I reduced average response time by 30%."
+    }
+  ]
+}
