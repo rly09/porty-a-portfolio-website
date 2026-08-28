@@ -1,0 +1,57 @@
+{
+  "id": 26,
+  "title": "Predicting Market Trends: The Engineering Behind a Housing Price ML Model",
+  "excerpt": "Building a machine learning model for real estate prices is more than just picking an algorithm. It's about data wrangling, feature engineering, and turning a model into a usable product.",
+  "date": "August 28, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "When I decided to build a machine learning model for predicting house prices in Chennai, I quickly realized that the real challenge wasn't the algorithm — it was everything around it. Data cleaning, feature engineering, and turning a notebook experiment into a reliable service are where most of the work happens."
+    },
+    {
+      "type": "h3",
+      "text": "Starting with the Data"
+    },
+    {
+      "type": "p",
+      "text": "Real estate data is messy. I had to aggregate listings from various sources, handle missing values, and standardize location data. For a city like Chennai with diverse neighborhoods, encoding location was crucial. I used one-hot encoding for zones and created distance-based features to key landmarks and transit hubs."
+    },
+    {
+      "type": "h3",
+      "text": "Feature Engineering: Where Domain Knowledge Matters"
+    },
+    {
+      "type": "p",
+      "text": "Beyond raw features, I engineered new ones: age of the property, proximity to schools and hospitals, and even a 'liquor store density' feature inspired by a classic real estate heuristic. The goal was to capture nuances that a linear model could interpret."
+    },
+    {
+      "type": "h3",
+      "text": "Model Choice: Why Linear Regression?"
+    },
+    {
+      "type": "p",
+      "text": "For a use case like price prediction, Linear Regression offered the perfect balance of interpretability and performance. Stakeholders needed to understand what drove prices, not just a black-box prediction. I trained on a split of historical data, and while the RMSE was acceptable, the R-squared revealed the limitations of a purely linear approach in a non-linear market."
+    },
+    {
+      "type": "blockquote",
+      "text": "The simplest model that explains the data is often the most trustworthy in production.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "h3",
+      "text": "Deployment and Integration"
+    },
+    {
+      "type": "p",
+      "text": "I wrapped the model in a FastAPI endpoint, using joblib for serialization. The endpoint accepted features and returned a price range. On the Flutter side, I built a simple form to collect inputs. The gap between a Jupyter notebook and a production API is vast: error handling, input validation, and logging became top priorities."
+    },
+    {
+      "type": "h3",
+      "text": "The Bigger Lesson"
+    },
+    {
+      "type": "p",
+      "text": "Building this model taught me that AI projects are software engineering projects first. The model is just one component. The pipeline, the API, the client integration — these are what make the AI useful. For anyone stepping into ML, start with a simple model, ship it early, and focus on the engineering around it."
+    }
+  ]
+}
