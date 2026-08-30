@@ -1,0 +1,53 @@
+{
+  "id": 27,
+  "title": "Refactoring Legacy Flutter Code: Patterns for Maintainability",
+  "excerpt": "A practical guide to untangling old Flutter codebases using modularization, interfaces, and incremental refactoring.",
+  "date": "August 30, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "When a project grows beyond a few screens, the lines between UI, business logic, and data start to blur. In the rush to ship features, we often paste logic directly into widgets, creating monolithic classes that are hard to test and even harder to change."
+    },
+    {
+      "type": "h3",
+      "text": "The God Widget Problem"
+    },
+    {
+      "type": "p",
+      "text": "I've seen widgets that fetch data, parse JSON, decide what to render, and even handle animations. They become the single point of failure. The first step is to identify these god widgets and break them apart."
+    },
+    {
+      "type": "blockquote",
+      "text": "You can't fix what you can't see.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "h3",
+      "text": "Introduce Interfaces and Use Cases"
+    },
+    {
+      "type": "p",
+      "text": "Extracting the data access into a repository interface and moving business logic into use cases separates concerns. This not only makes unit testing possible but also allows swapping implementations for different environments."
+    },
+    {
+      "type": "h3",
+      "text": "Adopt a Feature-First Folder Structure"
+    },
+    {
+      "type": "p",
+      "text": "Grouping files by feature rather than by type (e.g., widgets, services) encourages cohesion and reduces cross-feature dependencies. In a recent project, restructuring the codebase this way cut down the time to onboard a new developer by half."
+    },
+    {
+      "type": "h3",
+      "text": "Refactor Incrementally with Tests"
+    },
+    {
+      "type": "p",
+      "text": "Write a failing test that captures the current behavior, refactor the code, and watch the test turn green. This safety net lets you change architecture without fear of breaking existing functionality."
+    },
+    {
+      "type": "p",
+      "text": "Refactoring is not a one-time task; it is a discipline. By spotting god widgets, introducing clear boundaries, and moving step by step, legacy Flutter apps become maintainable platforms for future innovation."
+    }
+  ]
+}
