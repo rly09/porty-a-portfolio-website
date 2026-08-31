@@ -1,0 +1,49 @@
+{
+  "id": 28,
+  "title": "The Pragmatic Guide to Local Caching in Flutter Apps",
+  "excerpt": "Balancing offline resilience with real-time sync is one of the hardest parts of mobile development. Here is how I approach local caching using HiveDB and Supabase.",
+  "date": "August 31, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "Mobile applications live in an environment of flaky networks and unpredictable latency. As developers, we often spend too much time perfecting the UI for the online state and neglecting what happens when the user loses connection or goes underground. In my experience, a great mobile experience is defined by how gracefully it degrades offline."
+    },
+    {
+      "type": "h3",
+      "text": "The Dual-Write Dilemma"
+    },
+    {
+      "type": "p",
+      "text": "When building apps like Bolo AI or CareerVerse, which rely heavily on Flutter and Supabase, I needed a way to keep local data fast and responsive while syncing with a remote PostgreSQL instance. The temptation is to use a simple REST API call for every interaction, but that creates a terrible user experience when the network drops. Instead, I adopted a local-first architecture using HiveDB for local state persistence, paired with Supabase for real-time backend sync."
+    },
+    {
+      "type": "blockquote",
+      "text": "Local data should feel instant, while remote data should be a background concern, not a UI-blocking roadblock.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "h3",
+      "text": "Structuring the Cache Layer"
+    },
+    {
+      "type": "p",
+      "text": "HiveDB is a lightweight, fast NoSQL database written in pure Dart, making it an excellent choice for Flutter applications that need synchronous key-value access. By structuring my data models to serialize cleanly to and from Hive boxes, I can read UI data instantly without any async overhead. The real challenge, however, is keeping the local Hive store and the remote Supabase database in sync without creating duplicate data or race conditions."
+    },
+    {
+      "type": "p",
+      "text": "To solve this, I implemented a simple queue-based sync mechanism. Every write operation—whether a UI toggle, a voice command in Bolo AI, or a profile update—first writes synchronously to the local Hive box. This update immediately triggers a UI rebuild, giving the user instant feedback. Simultaneously, the change is pushed into an isolated background sync queue. If the device is online, the queue flushes the update to Supabase. If the network fails, the queue persists locally and retries when connectivity is restored."
+    },
+    {
+      "type": "h3",
+      "text": "Handling Real-Time Subscriptions Offline"
+    },
+    {
+      "type": "p",
+      "text": "Supabase Realtime is fantastic for live updates, but it assumes a persistent WebSocket connection. When building social or collaborative features—similar to what I did with Mil, the social media platform—handling offline realtime updates requires careful state merging. I listen to Supabase realtime events, but instead of blindly overwriting the local Hive cache, I use a versioning system. Each record has a local version and a remote version. When a realtime event arrives, the sync engine resolves conflicts based on a last-write-wins or custom merge strategy, ensuring that user-generated content is never silently lost."
+    },
+    {
+      "type": "p",
+      "text": "This approach has significantly reduced crash rates due to network timeouts and given users a seamless transition between online and offline modes. Good mobile architecture isn't about showing spinners; it is about making the transition between online and offline states invisible to the end user."
+    }
+  ]
+}
