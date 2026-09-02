@@ -1,0 +1,45 @@
+{
+  "id": 29,
+  "title": "The Architecture of Real-Time Social Apps: Lessons from Building Mil with Flutter and Firebase",
+  "excerpt": "Real-time social platforms demand careful state management and architectural planning. Here are the lessons learned while building a responsive social app using Flutter, BLoC, and Firebase.",
+  "date": "September 2, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "Building a social media platform is often seen as a rite of passage for developers. When I set out to build Mil, a modern social media platform with real-time updates, the initial excitement was quickly tempered by the cold reality of real-time data synchronization. Real-time social apps are unforgiving; they expose every architectural weakness in state management, network handling, and data modeling."
+    },
+    {
+      "type": "h3",
+      "text": "Choosing BLoC for High-Churn Feeds"
+    },
+    {
+      "type": "p",
+      "text": "In a social feed, the UI changes constantly. Likes, comments, shares, and new posts arrive in rapid, unpredictable bursts. I chose the BLoC (Business Logic Component) pattern in Flutter to manage this complexity. By separating business logic from the presentation layer, BLoC allowed me to handle the heavy lifting of Firebase Firestore listeners and map them to clean UI states. The key was mapping incoming stream events to specific states, ensuring the UI only rebuilds what is absolutely necessary, avoiding the performance pitfalls of frequent, full-tree rebuilds."
+    },
+    {
+      "type": "h3",
+      "text": "The Illusion of Instant Sync: Managing Latency"
+    },
+    {
+      "type": "p",
+      "text": "Firebase promises real-time synchronization, but under the hood, network latency is always present. To make the app feel instantaneous, I implemented optimistic updates. When a user likes a post, the UI immediately reflects the change locally, while the background task syncs with Firebase. However, this introduces a challenge: what happens if the sync fails or takes longer than expected? Implementing robust local state queues and error-handling mechanisms became crucial to prevent the UI from showing stale or contradictory states."
+    },
+    {
+      "type": "blockquote",
+      "text": "Real-time architecture is not about eliminating latency, but about designing the system to make network delays invisible to the user.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "h3",
+      "text": "Firestore Data Modeling for Social Graphs"
+    },
+    {
+      "type": "p",
+      "text": "Social networks are inherently graph-like, but Firestore is a document-oriented database. Translating a social graph into documents requires careful trade-offs. For feeds, I had to balance denormalization for fast reads against the cost of updating multiple documents when a user updates their profile or posts. By structuring the feed as a collection of user-specific documents with controlled array sizes and utilizing pagination, I managed to keep query times low while avoiding the dreaded 'nested array' limits that can cripple Firestore performance."
+    },
+    {
+      "type": "p",
+      "text": "Building Mil taught me that real-time architecture is as much about understanding database constraints as it is about mastering state management. It is a constant process of trade-offs, but when done right, the result is a seamless, responsive experience that feels alive."
+    }
+  ]
+}
