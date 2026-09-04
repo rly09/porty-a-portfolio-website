@@ -1,0 +1,33 @@
+{
+  "id": 30,
+  "title": "Automating Flutter Deployments: A Practical CI/CD Setup with GitHub Actions",
+  "excerpt": "A reliable release pipeline turns manual steps into automated checks, letting you ship with confidence.",
+  "date": "September 4, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "When I started building mobile apps with Flutter, the most painful part was never the UI — it was the release process. Uploading builds, managing version codes, and distributing test builds to QA felt like a chore that always ended in a last‑minute scramble."
+    },
+    {
+      "type": "h3",
+      "text": "Workflow Anatomy"
+    },
+    {
+      "type": "p",
+      "text": "I designed a GitHub Actions workflow that triggers on every push to the main branch. The first job runs flutter test and flutter analyze to catch regressions early. If those pass, the second job builds the Android and iOS bundles, signs them with the stored keystore and provisioning profiles, and uploads the artifacts to Firebase App Distribution. A final job deploys the web build to Vercel, because my portfolio also hosts a Next.js front‑end."
+    },
+    {
+      "type": "blockquote",
+      "text": "Automation isn't about removing humans; it's about removing the places where humans forget.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "One surprise was how much faster the feedback loop became. With each commit, I could see test results, lint warnings, and even a preview link within minutes. That immediacy forced me to write better unit tests, because failing tests were no longer a distant concern but an immediate blocker."
+    },
+    {
+      "type": "p",
+      "text": "I also added a manual approval step before production releases. It's a small gate, but it prevents accidental deployments when a hotfix branch is merged without review. The workflow uses environment protection rules, so only maintainers can approve."
+    }
+  ]
+}
