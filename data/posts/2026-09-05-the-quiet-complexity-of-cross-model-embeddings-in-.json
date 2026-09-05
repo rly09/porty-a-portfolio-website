@@ -1,0 +1,65 @@
+{
+  "id": 31,
+  "title": "The Quiet Complexity of Cross-Model Embeddings in Mobile Apps",
+  "excerpt": "Integrating vector models across Flutter, FastAPI, and FAISS taught me that embeddings are not just numbers — they are contracts between systems that break silently when you least expect them.",
+  "date": "September 5, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "Last year, while extending Chanakya's legal outcome prediction pipeline, I connected a Flutter mobile client to a FastAPI backend serving FAISS-indexed embeddings generated from historical case data. On paper, the architecture was clean: mobile app sends a query, backend retrieves similar cases, model predicts outcomes. In practice, the first three weeks were spent debugging why identical queries returned wildly different nearest neighbors between local testing and production."
+    },
+    {
+      "type": "h3",
+      "text": "Embeddings Are Not Portable By Default"
+    },
+    {
+      "type": "p",
+      "text": "The root cause was not a bug in FAISS or FastAPI. It was a silent mismatch between the tokenizer version used to generate embeddings during training and the one deployed in the inference service. A minor library update had shifted token boundaries, which in turn shifted cosine distances just enough to reorder the top-k results. Because embeddings are high-dimensional and continuous, these shifts are invisible until you compare indices side by side."
+    },
+    {
+      "type": "blockquote",
+      "text": "An embedding is only as trustworthy as the pipeline that produced it.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "This lesson resurfaced when building CodeLoom Explorer's AST-based knowledge graphs. The extension extracts code symbols and maps them into vector space using a custom embedding model trained on documentation snippets. When users opened the same repository on macOS versus Linux, the symbol ordering changed slightly due to filesystem traversal differences, which cascaded into different graph layouts. The vectors were correct, but the context they encoded was subtly wrong."
+    },
+    {
+      "type": "h3",
+      "text": "Versioning the Invisible"
+    },
+    {
+      "type": "p",
+      "text": "After that, I started treating embeddings like compiled binaries — immutable, versioned, and tied to a specific build environment. For Chanakya, I containerized the embedding generation step with pinned dependency hashes and stored each model artifact alongside its training metadata in Supabase. The FastAPI layer now rejects requests if the incoming query cannot be tokenized with the exact tokenizer version tied to the active index."
+    },
+    {
+      "type": "p",
+      "text": "On the Flutter side, I added a lightweight checksum verification before sending any text to the backend. If the local tokenizer differs from the server's expected version, the app surfaces a warning instead of silently returning misleading results. It is not glamorous, but it prevents the kind of silent degradation that erodes user trust over time."
+    },
+    {
+      "type": "h3",
+      "text": "When Distance Is Not Just Distance"
+    },
+    {
+      "type": "p",
+      "text": "What surprised me most was how often domain semantics leaked into what I assumed were purely mathematical operations. In Chalchitra's movie recommendation engine, cosine similarity worked well for genre-based suggestions, but failed completely for niche films with overlapping casts. The embeddings captured surface-level features but missed deeper narrative connections. I had to layer a secondary similarity metric based on plot embedding overlap, computed only for edge cases where the top results felt off."
+    },
+    {
+      "type": "p",
+      "text": "This tension between mathematical precision and human judgment keeps coming back. Whether it is legal outcomes in Chanakya, code relationships in CodeLoom Explorer, or movie preferences in Chalchitra, the embedding layer is never the final word. It is a filter, a starting point, a hypothesis that must be validated by the application layer."
+    },
+    {
+      "type": "h3",
+      "text": "Building Contracts, Not Just Models"
+    },
+    {
+      "type": "p",
+      "text": "Today, every cross-model integration I build starts with a contract: explicit tokenizer versions, pinned preprocessing pipelines, and fallback strategies when embeddings drift. Supabase stores not just the vectors but the lineage of how they were produced. FastAPI validates every request against that lineage. Flutter surfaces warnings when the client diverges."
+    },
+    {
+      "type": "p",
+      "text": "Because the hardest bugs are not the ones that crash your app. They are the ones that make it confidently wrong."
+    }
+  ]
+}
