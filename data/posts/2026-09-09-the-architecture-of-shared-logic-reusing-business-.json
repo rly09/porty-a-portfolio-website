@@ -1,0 +1,52 @@
+{
+  "id": 33,
+  "title": "The Architecture of Shared Logic: Reusing Business Logic Across Flutter Web, Mobile, and Next.js",
+  "excerpt": "Building for multiple platforms shouldn't mean duplicating your core logic. Here is how I structured shared business rules, types, and validation across Flutter and Next.js using TypeScript and Supabase.",
+  "date": "September 9, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "One of the most persistent challenges in full-stack development is keeping your frontend and backend in sync. When building projects like Career Verse or Bolo AI, where a Flutter mobile app needs to communicate seamlessly with a Next.js web administration panel, the temptation is to write separate validation rules and data models for each platform. Over time, these divergent implementations drift, leading to subtle bugs where the web app accepts invalid data that the mobile app rejects, or vice versa."
+    },
+    {
+      "type": "h3",
+      "text": "The Drift Problem in Multi-Platform Apps"
+    },
+    {
+      "type": "p",
+      "text": "In traditional setups, the frontend and backend speak different dialects. JavaScript/TypeScript in Next.js and Dart in Flutter can easily drift. Validation logic written in one place often ends up copy-pasted, leading to silent bugs when an API contract changes but the form validation doesn't. To solve this, I started treating the shared business logic as a contract first, leveraging TypeScript's strict types and Supabase's auto-generated client."
+    },
+    {
+      "type": "h3",
+      "text": "Supabase Schema as the Single Source of Truth"
+    },
+    {
+      "type": "p",
+      "text": "Supabase provides a powerful foundation because it generates TypeScript types from your PostgreSQL schema. By using these types directly in both the Next.js dashboard and the Flutter app, we eliminate the manual mapping of database tables to UI models. The schema becomes the contract. If a column changes in Supabase, the type generation forces us to update both clients immediately."
+    },
+    {
+      "type": "h3",
+      "text": "Centralizing Business Rules in a Shared Package"
+    },
+    {
+      "type": "p",
+      "text": "To take this further, I structured shared business rules into a dedicated TypeScript package. For projects like Chanakya or Chennai House Price Prediction, where data processing and prediction logic are key, we can write the core logic in TypeScript and expose it via a FastAPI backend. The Flutter frontend or Next.js web app can then consume these APIs, ensuring that the mathematical models and data transformations remain consistent across all surfaces."
+    },
+    {
+      "type": "h3",
+      "text": "Generating Dart Types from OpenAPI/TypeScript"
+    },
+    {
+      "type": "p",
+      "text": "On the Flutter side, tools like dart_code_gen or custom build runners can take the shared TypeScript definitions or OpenAPI specs and generate Dart equivalents. This ensures that enum values, API endpoints, and request/response shapes are identical. It removes the human error of translating types manually, allowing the team to focus on UI components rather than boilerplate mapping."
+    },
+    {
+      "type": "h3",
+      "text": "Conclusion: Less Boilerplate, More Velocity"
+    },
+    {
+      "type": "p",
+      "text": "Sharing logic isn't about writing everything in one language; it's about establishing a robust contract. By aligning Flutter, Next.js, and Supabase around a single schema and type system, we build systems that are resilient to change and much easier to maintain. It frees up mental space to focus on what actually matters: building great user experiences."
+    }
+  ]
+}
