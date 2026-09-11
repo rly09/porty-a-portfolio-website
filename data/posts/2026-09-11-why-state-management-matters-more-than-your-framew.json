@@ -1,0 +1,29 @@
+{
+  "id": 34,
+  "title": "Why State Management Matters More Than Your Framework",
+  "excerpt": "Frameworks come and go, but how you manage state defines whether your app scales or crumbles.",
+  "date": "August 16, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "..."
+    },
+    {
+      "type": "h3",
+      "text": "..."
+    },
+    {
+      "type": "p",
+      "text": "..."
+    },
+    {
+      "type": "blockquote",
+      "text": "...",
+      "author": "..."
+    },
+    {
+      "type": "p",
+      "text": "..."
+    }
+  ]
+}
