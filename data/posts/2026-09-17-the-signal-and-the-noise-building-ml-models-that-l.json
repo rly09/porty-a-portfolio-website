@@ -1,0 +1,70 @@
+{
+  "id": 35,
+  "title": "The Signal and the Noise: Building ML Models That Learn From Real User Behavior",
+  "excerpt": "Most machine learning projects fail not because of bad algorithms, but because the training data never reflects what users actually do.",
+  "date": "September 17, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "When I started building predictive features for Career Verse, I assumed the hardest part would be choosing the right model architecture or tuning hyperparameters. I was wrong. The real challenge was figuring out what users were actually doing versus what I thought they were doing."
+    },
+    {
+      "type": "h3",
+      "text": "The Gap Between Logged Events and Real Intent"
+    },
+    {
+      "type": "p",
+      "text": "Early versions of the recommendation engine were trained on clickstream data that looked clean in our analytics dashboard. Every interaction was recorded, every scroll and tap logged. But when we deployed the model to production, the recommendations felt off. Users ignored them. The model was technically correct on paper, but it had learned patterns from data that didn’t represent genuine interest."
+    },
+    {
+      "type": "p",
+      "text": "The problem was subtle. A user scrolling quickly through career paths wasn’t exploring options — they were skimming. A long press might indicate curiosity, or it might be an accidental touch. Our logging treated every event equally, and the model absorbed that noise as signal."
+    },
+    {
+      "type": "blockquote",
+      "text": "Data quality is not about having more data. It is about having data that means something.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "h3",
+      "text": "Building Feedback Loops That Matter"
+    },
+    {
+      "type": "p",
+      "text": "Instead of relying purely on implicit feedback, we introduced lightweight explicit signals. After each recommendation, users could quickly indicate relevance with a single tap. More importantly, we tracked what happened after a recommendation was accepted — did the user complete the suggested action, or did they abandon it halfway through?"
+    },
+    {
+      "type": "p",
+      "text": "This shifted our training data from raw interaction counts to outcome-weighted events. A recommendation that led to a completed career assessment was worth far more than one that resulted in a quick scroll past. The model started producing suggestions that felt intuitive rather than mechanical."
+    },
+    {
+      "type": "h3",
+      "text": "The Chennai House Price Model Taught Me the Same Lesson"
+    },
+    {
+      "type": "p",
+      "text": "Building the housing price prediction model for Chennai was my first deep dive into real-world ML deployment. The initial dataset came from public records and property listings, which seemed comprehensive. But the model’s predictions diverged sharply from actual market behavior in certain neighborhoods."
+    },
+    {
+      "type": "p",
+      "text": "The issue wasn’t the algorithm — it was the data’s blind spots. Listings didn’t capture informal transactions, seasonal variations, or the impact of local infrastructure projects. By incorporating additional features like proximity to transit hubs and recent civic development announcements, the model’s accuracy improved significantly. The lesson was clear: domain context matters more than model complexity."
+    },
+    {
+      "type": "h3",
+      "text": "Toward Models That Adapt, Not Just Predict"
+    },
+    {
+      "type": "p",
+      "text": "Today, I approach every ML integration with a question: what behavior am I actually trying to predict, and how do I know my data represents it? Whether it’s the cosine similarity engine in Chalchitra or the legal outcome predictions in Chanakya, the foundation is always the same — meaningful data beats clever algorithms."
+    },
+    {
+      "type": "p",
+      "text": "The best models aren’t the ones that perform perfectly on benchmark datasets. They’re the ones that notice when users stop engaging and quietly adapt before anyone files a bug report."
+    },
+    {
+      "type": "blockquote",
+      "text": "A model that learns from what users do, not what we think they do, stops being a black box and starts being a conversation.",
+      "author": "Roshan Lal Yogi"
+    }
+  ]
+}
