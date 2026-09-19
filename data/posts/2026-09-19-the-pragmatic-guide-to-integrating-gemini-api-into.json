@@ -1,0 +1,45 @@
+{
+  "id": 36,
+  "title": "The Pragmatic Guide to Integrating Gemini API into Flutter Apps",
+  "excerpt": "Integrating large language models like Google's Gemini into mobile apps requires more than just calling an API. It demands careful handling of streaming tokens, UI state, and latency.",
+  "date": "September 19, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "When building voice assistants and AI-powered features, the temptation is to treat the LLM as a black box and just plug it into the UI. However, integrating Google's Gemini API into Flutter apps reveals a unique set of challenges. Mobile apps are inherently stateful, offline-capable, and highly interactive, whereas LLM APIs are stateless, network-dependent, and streaming by nature. Bridging this gap requires a pragmatic approach to architecture."
+    },
+    {
+      "type": "h3",
+      "text": "Consuming Streamed Responses in Real-Time"
+    },
+    {
+      "type": "p",
+      "text": "Gemini's streaming API allows you to receive tokens as they are generated, giving users the impression of a fast, conversational response. In Flutter, this maps perfectly to the StreamBuilder widget or, in a more complex architecture like Riverpod, a Stream-based state provider. The key is to decouple the network layer from the UI layer so that incoming chunks update the message bubble incrementally without triggering a full widget tree rebuild for every single token."
+    },
+    {
+      "type": "h3",
+      "text": "Managing Conversational Context and State"
+    },
+    {
+      "type": "p",
+      "text": "A chat interface is only as good as its memory. Maintaining conversation history locally—using Hive or a local SQLite database—ensures that the app feels instant even when the network drops. By syncing this local state with a backend like Supabase, you can provide a seamless cross-device experience. The challenge lies in managing the context window; you must intelligently truncate older messages to stay within token limits without losing the conversational flow."
+    },
+    {
+      "type": "h3",
+      "text": "Graceful Degradation and Error Handling"
+    },
+    {
+      "type": "p",
+      "text": "Network requests to LLMs can fail, rate-limit, or timeout. In a mobile environment, where signal strength fluctuates, your app must handle these failures gracefully. Implementing retry mechanisms with exponential backoff, caching previous queries, and providing clear fallback UIs are essential. Users should never be left staring at a spinner when the API is unreachable; the app should degrade to a usable offline state."
+    },
+    {
+      "type": "blockquote",
+      "text": "The best AI integrations feel invisible. They don't showcase the model; they solve the user's problem without getting in the way.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "Integrating Gemini into Flutter is not just about adding a chat box. It is about building a resilient, responsive system that respects the constraints of mobile devices while leveraging the power of generative AI. By focusing on streaming, local state, and error handling, you can build AI features that feel native rather than bolted on."
+    }
+  ]
+}
