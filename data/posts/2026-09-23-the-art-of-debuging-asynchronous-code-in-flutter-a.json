@@ -1,0 +1,41 @@
+{
+  "id": 38,
+  "title": "The Art of Debuging Asynchronous Code in Flutter and Node.js",
+  "excerpt": "Async bugs are notoriously difficult to reproduce and fix. Here is how I approach tracing and resolving race conditions across Flutter and Node.js backends.",
+  "date": "September 23, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "Asynchronous programming allows us to build responsive, fast applications, but it introduces a unique class of bugs that are notoriously difficult to reproduce and fix. When building full-stack applications using Flutter for the frontend and Node.js or FastAPI for the backend, the complexity multiplies. The execution flow is no longer linear, and traditional debugging tools often fall short when trying to trace requests that jump between client and server."
+    },
+    {
+      "type": "h3",
+      "text": "Reconstructing the Timeline"
+    },
+    {
+      "type": "p",
+      "text": "When a race condition occurs, the first step is not to look at the code, but to reconstruct the timeline of events. In my full-stack projects, I rely heavily on structured logging with correlation IDs. By attaching a unique identifier to every user request, I can trace a single action—say, updating a profile in a Flutter app—as it travels through a Next.js API route, hits a Python FastAPI endpoint, and updates the Supabase database. Without this context, debugging async flows is like trying to solve a mystery with only half the clues."
+    },
+    {
+      "type": "blockquote",
+      "text": "If you cannot visualize the timeline, you cannot debug the race condition.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "h3",
+      "text": "The Pitfalls of Shared Mutable State"
+    },
+    {
+      "type": "p",
+      "text": "Another common source of async bugs is shared mutable state. When using realtime databases like Supabase or Firebase in a Flutter app, the UI is constantly listening to data streams. If the local state management (like Riverpod or BLoC) does not handle incoming server updates gracefully, you can end up with UI inconsistencies where the screen shows stale data even though the backend has already processed the change. The key is to treat the server as the single source of truth and design your local state to be a reflection of that truth, not an independent copy."
+    },
+    {
+      "type": "h3",
+      "text": "Reproducibility is the Key"
+    },
+    {
+      "type": "p",
+      "text": "The most dangerous async bugs are those that only happen once in a blue moon. To catch these, I write integration tests that simulate network latency, timeouts, and packet loss. By artificially delaying API responses in a test environment, I can force race conditions to surface. If your Flutter app sends two rapid 'save' clicks and the backend processes them out of order, your test will catch it. In production, it just leaves the user confused. Building resilient async flows is as much about testing as it is about writing clean code."
+    }
+  ]
+}
