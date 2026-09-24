@@ -1,0 +1,45 @@
+{
+  "id": 39,
+  "title": "The Practicalities of Vector Search: Building Semantic Search with FAISS and FastAPI",
+  "excerpt": "Keyword search is brittle. Semantic search using vector embeddings is how we build truly intelligent applications. Here is how I implemented FAISS-backed vector search in a production Python backend.",
+  "date": "September 24, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "When building an intelligent legal platform like Chanakya, the biggest challenge isn't the UI or the Flutter frontend; it is making sense of millions of unstructured legal documents. Traditional keyword search fails miserably here because legal language is nuanced, and a single synonym can completely change the context of a query."
+    },
+    {
+      "type": "h3",
+      "text": "Why FAISS Over Other Vector Databases"
+    },
+    {
+      "type": "p",
+      "text": "In the early stages of building the backend with FastAPI, I needed a vector database that was lightweight, incredibly fast, and didn't require managing a separate cluster. Facebook's FAISS (Facebook AI Similarity Search) was the obvious choice. It allows us to run high-performance k-NN search directly in-memory, which is perfect for low-latency API endpoints without adding significant operational overhead."
+    },
+    {
+      "type": "h3",
+      "text": "Indexing and Embedding Generation"
+    },
+    {
+      "type": "p",
+      "text": "The core of the system relies on converting legal case text into dense vector embeddings. We use a transformer model to generate these embeddings, capturing the semantic meaning of the text. Once we have the vectors, we index them using FAISS. For a manageable dataset, an IndexFlatL2 is sufficient, but as the dataset scales, we transition to IndexIVFFlat or IndexHNSW to maintain sub-second query times."
+    },
+    {
+      "type": "blockquote",
+      "text": "Vector search isn't just about finding similar words; it's about understanding the intent behind the query.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "h3",
+      "text": "Integrating with FastAPI"
+    },
+    {
+      "type": "p",
+      "text": "Exposing this search capability through FastAPI is straightforward. When a user sends a query from the Flutter app, the backend generates the query embedding, runs the k-NN search against the FAISS index, and maps the returned IDs back to the actual legal documents. This entire round-trip happens in milliseconds, providing a seamless search experience for users looking for complex legal precedents."
+    },
+    {
+      "type": "p",
+      "text": "Semantic search is no longer a luxury; it is a necessity for modern applications dealing with unstructured data. By combining the simplicity of FastAPI with the raw speed of FAISS, we can build powerful, intelligent backends that scale without complicating the architecture."
+    }
+  ]
+}
