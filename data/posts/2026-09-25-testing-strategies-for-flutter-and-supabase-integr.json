@@ -1,0 +1,53 @@
+{
+  "id": 40,
+  "title": "Testing Strategies for Flutter and Supabase Integration",
+  "excerpt": "A practical guide to building reliable tests for apps that combine Flutter frontends with Supabase backends.",
+  "date": "September 25, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "When building full‑stack apps with Flutter and Supabase, the temptation is to write code fast and postpone testing until the end. In practice, a disciplined testing strategy is the only thing that keeps a product stable as features pile up. I learned this the hard way while shipping a career‑recommendation app that relied on real‑time Supabase subscriptions; a single missing index caused UI glitches that only surfaced in production."
+    },
+    {
+      "type": "h3",
+      "text": "Unit Testing the Presentation Layer"
+    },
+    {
+      "type": "p",
+      "text": "Start by isolating the UI from the backend. Use Flutter's built‑in test infrastructure to render widgets with a mocked Supabase client. The `supabase` package exposes a `SupabaseClient` interface, so you can substitute it with a fake that returns predetermined responses. This lets you verify that your `Bloc` or `Riverpod` state transitions happen correctly without hitting the network."
+    },
+    {
+      "type": "p",
+      "text": "I typically create a `MockSupabaseClient` that implements the same methods as the real client but returns canned data. By wiring it into the widget under test, I can simulate success, error, and loading states. The key is to keep the mock lightweight—just enough to exercise the UI logic."
+    },
+    {
+      "type": "h3",
+      "text": "Integration Testing with Supabase"
+    },
+    {
+      "type": "p",
+      "text": "Once the UI is covered, you need to validate the interaction between your Dart code and the Supabase API. Integration tests should spin up a local Supabase instance (or use the `supabase-cli` test mode) and run real queries against a temporary database. This catches schema mismatches, missing RLS policies, and N+1 query problems that unit mocks can't reveal."
+    },
+    {
+      "type": "p",
+      "text": "I prefer to write integration tests in a separate `test/integration` folder and run them with `flutter test` using the `--integration-test` flag. Each test should clean up after itself by deleting the rows it created, ensuring isolation between runs."
+    },
+    {
+      "type": "h3",
+      "text": "End‑to‑End Tests with Flutter Driver"
+    },
+    {
+      "type": "p",
+      "text": "Finally, end‑to‑end tests verify the whole flow from UI to database. Flutter Driver can drive the app on a real device or emulator while interacting with Supabase. Combine this with a tool like `Appium` if you need to test cross‑platform behavior. The challenge is flakiness, so limit the number of E2E tests to critical user journeys—such as sign‑up, profile creation, and data synchronization."
+    },
+    {
+      "type": "blockquote",
+      "text": "Testing is not about finding bugs, it's about proving your code works under real conditions.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "By layering unit, integration, and end‑to‑end tests, you gain confidence to deploy new features without breaking existing functionality. The investment pays off when you can ship a release on Friday afternoon and sleep through the weekend."
+    }
+  ]
+}
