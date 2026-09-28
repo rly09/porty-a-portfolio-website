@@ -1,0 +1,45 @@
+{
+  "id": 43,
+  "title": "The Art of Context Engineering: Structuring LLM Applications for Real-World Reliability",
+  "excerpt": "Prompt engineering is just the tip of the iceberg. In production, the real challenge is context engineering—how you structure, retrieve, and inject data to make LLMs reliable.",
+  "date": "September 28, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "When people talk about building AI applications, the conversation usually starts with prompt engineering. We spend hours crafting the perfect instruction, tweaking keywords, and hoping the model behaves. But after spending months building production-grade LLM integrations like Bolo AI and Chanakya, I've realized that prompt engineering is just the tip of the iceberg. The real magic—and the real complexity—lies in context engineering."
+    },
+    {
+      "type": "h3",
+      "text": "What is Context Engineering?"
+    },
+    {
+      "type": "p",
+      "text": "Context engineering is the discipline of designing, retrieving, and managing the data that flows into your LLM. An LLM is only as good as the information it receives. If you feed it stale, irrelevant, or poorly structured data, even the most sophisticated model will hallucinate or produce garbage. In my experience, building a robust context pipeline is what separates a demo from a production application."
+    },
+    {
+      "type": "h3",
+      "text": "Building the Data Retrieval Layer with FAISS and Supabase"
+    },
+    {
+      "type": "p",
+      "text": "For projects like Chanakya, which predicts legal outcomes, the model needs access to specific historical case data. We use FAISS for fast vector similarity search and Supabase to store and retrieve structured metadata. The key is not just retrieving the closest vectors, but ranking them based on relevance, recency, and jurisdictional applicability before they ever reach the LLM's context window."
+    },
+    {
+      "type": "h3",
+      "text": "Orchestrating Context with FastAPI"
+    },
+    {
+      "type": "p",
+      "text": "Once the relevant pieces of data are retrieved, they need to be assembled into a coherent prompt. This is where FastAPI shines. We build lightweight, high-performance endpoints that handle the orchestration: filtering out noise, tokenizing the retrieved documents, and dynamically injecting them into the system prompt based on the user's specific query. This ensures we stay within token limits while maximizing the signal-to-noise ratio."
+    },
+    {
+      "type": "blockquote",
+      "text": "The quality of your LLM application is directly proportional to the quality of the context you feed it.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "By treating context as a first-class architectural concern rather than an afterthought, we can build AI features that are not only powerful but also dependable. It's the quiet engineering behind the scenes that makes the magic feel real to the user."
+    }
+  ]
+}
