@@ -1,0 +1,53 @@
+{
+  "id": 45,
+  "title": "The Practicalities of Multi-Platform Architecture: Unifying Flutter and Next.js",
+  "excerpt": "Building across mobile and web doesn't have to mean duplicating effort. It requires accepting the strengths of each platform and architecting a clean boundary between them.",
+  "date": "October 1, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "When building products like Career Verse or Chanakya, the question of target platforms always arises. Do we go mobile-first with Flutter, web-first with Next.js, or try to force a single codebase to rule them all? After shipping several apps across both mobile and web, I've learned that trying to force Flutter Web to be a perfect replacement for Next.js is a recipe for performance bottlenecks and SEO nightmares. The pragmatic path is to embrace the strengths of each platform while building a robust, shared backend and design contract."
+    },
+    {
+      "type": "h3",
+      "text": "Accepting Platform Divergence"
+    },
+    {
+      "type": "p",
+      "text": "Flutter is an incredible toolkit for rich, interactive mobile experiences, but the web browser has its own native expectations. Users expect instant page loads, deep linking, and searchability on the web—things that are inherently difficult for a canvas-based rendering engine to handle efficiently. By using Next.js for the web frontend and Flutter for the mobile application, we leverage the best tools for the job. The key is ensuring that the user experience feels cohesive, even if the underlying technologies are entirely different."
+    },
+    {
+      "type": "h3",
+      "text": "The Backend as the Single Source of Truth"
+    },
+    {
+      "type": "p",
+      "text": "To keep Flutter and Next.js in sync, the backend architecture must be exceptionally clean. In my projects, Supabase and FastAPI serve as the central data hubs. Whether it's the legal case predictions in Chanakya or the career recommendations in Career Verse, the business logic resides in the backend. The frontends are reduced to thin clients that consume REST or GraphQL APIs. This not only simplifies state management on both platforms but also allows us to swap out frontend frameworks in the future without rewriting the entire application logic."
+    },
+    {
+      "type": "blockquote",
+      "text": "A robust API contract is the best bridge between a Dart mobile app and a TypeScript web app.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "h3",
+      "text": "Sharing Design Tokens Without the Overhead"
+    },
+    {
+      "type": "p",
+      "text": "One of the biggest challenges in a multi-platform setup is maintaining visual consistency. If the Flutter app uses a different color palette or spacing scale than the Next.js website, the product feels disjointed. To solve this, I define design tokens—colors, typography, and spacing—in a simple, platform-agnostic JSON file. Both the Flutter app (via a code generator or simple parsing) and the Next.js application (using CSS variables or Tailwind configuration) consume this single source of truth. This ensures visual alignment without introducing heavy build steps that slow down development."
+    },
+    {
+      "type": "h3",
+      "text": "Handling Platform-Specific Capabilities"
+    },
+    {
+      "type": "p",
+      "text": "Some features simply cannot be shared. For instance, device automation in Bolo AI or local background syncing requires native mobile capabilities. On the web, server-side rendering and middleware offer different optimization opportunities. The architecture must isolate these features in platform-specific modules. By establishing clear boundaries, we can implement native mobile features in Flutter while allowing the Next.js web app to handle server-side rendering, all while communicating seamlessly through shared backend webhooks and real-time database subscriptions."
+    },
+    {
+      "type": "p",
+      "text": "Multi-platform architecture is not about finding a silver bullet that compiles to everything. It's about understanding the constraints and strengths of each environment—Flutter for rich mobile interfaces, Next.js for the web—and building a clean, API-driven backend that unifies them. When done right, the platform becomes an implementation detail, and the user experience is the only thing that matters."
+    }
+  ]
+}
