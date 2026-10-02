@@ -1,0 +1,73 @@
+{
+  "id": 46,
+  "title": "When the Model is Wrong: Building Feedback Loops That Actually Improve ML Apps",
+  "excerpt": "Machine learning models don't ship themselves. The real work begins when users start pointing out what your model got wrong.",
+  "date": "October 2, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "When I first shipped the housing price prediction model for Chennai House Price Prediction, I assumed the heavy lifting was done once the model was trained and deployed. The scikit-learn pipeline was working, the FastAPI endpoint was responding, and the Flutter frontend was showing predictions. Within a week, users started reporting wildly inaccurate estimates for properties in areas the model had never seen before."
+    },
+    {
+      "type": "p",
+      "text": "That's when I realized the model wasn't the product. The feedback loop was."
+    },
+    {
+      "type": "h3",
+      "text": "The Silent Failure Mode"
+    },
+    {
+      "type": "p",
+      "text": "Most ML applications fail quietly. Unlike a crashing mobile app, a wrong prediction doesn't throw an exception. It just gives bad advice, and users either work around it or lose trust entirely. In the case of housing prices, a 30% error margin might seem acceptable until someone makes a financial decision based on it."
+    },
+    {
+      "type": "p",
+      "text": "The first thing I added was a simple confidence score alongside every prediction. Not the model's internal probability, but a heuristic based on how far the input features deviated from the training data. Properties in neighborhoods with fewer than ten training examples got a \"low confidence\" flag. It wasn't perfect, but it gave users context about when to trust the number."
+    },
+    {
+      "type": "blockquote",
+      "text": "A model that knows what it doesn't know is more valuable than a model that's confidently wrong.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "h3",
+      "text": "User Reports as Training Data"
+    },
+    {
+      "type": "p",
+      "text": "The real breakthrough came when I stopped treating user corrections as bug reports and started treating them as training data. Every time someone flagged a prediction as inaccurate, I logged the property details, the predicted price, and the actual sale price they provided. After a few months, I had a dataset of mispredictions that was more valuable than my original training set."
+    },
+    {
+      "type": "p",
+      "text": "I built a simple admin interface in Next.js where I could review these corrections, validate them against public records, and then retrain the model with the new examples. The process wasn't glamorous, but it was effective. Each retraining cycle improved accuracy by 8-12% in the previously problematic areas."
+    },
+    {
+      "type": "h3",
+      "text": "Closing the Loop in Mobile Apps"
+    },
+    {
+      "type": "p",
+      "text": "The same principle applies to Bolo AI's voice recognition and Chanakya's legal predictions. In Bolo AI, when the voice assistant misunderstands a command, that interaction gets logged with the user's correction. In Chanakya, when a predicted legal outcome doesn't match reality, lawyers on the platform can flag it with the actual outcome."
+    },
+    {
+      "type": "p",
+      "text": "The key is making the feedback mechanism frictionless. A single tap to report an issue. A simple form with just the essential fields. And then, crucially, actually using those reports to improve the system. Users notice when their feedback leads to visible improvements, and that builds trust in ways no marketing copy can."
+    },
+    {
+      "type": "h3",
+      "text": "The Architecture of Continuous Learning"
+    },
+    {
+      "type": "p",
+      "text": "At the infrastructure level, this requires thinking differently about data flow. Instead of a one-way pipeline from training to production, you need a feedback channel that feeds back into the training pipeline. In my current setup, user corrections go to a Supabase table, a nightly job processes them into a retraining dataset, and a GitHub Action triggers a new model build when enough corrections accumulate."
+    },
+    {
+      "type": "p",
+      "text": "The model versioning system I built for this tracks not just accuracy metrics but also which user corrections were incorporated. When a new model version ships, users who reported issues in the previous version get a notification: \"We've improved predictions in your area based on your feedback.\""
+    },
+    {
+      "type": "p",
+      "text": "Building ML applications is really about building systems that learn from being wrong. The model is just one component. The feedback loop, the data pipeline, the user interface for corrections, and the culture of continuous improvement around them — that's where the real engineering happens."
+    }
+  ]
+}
