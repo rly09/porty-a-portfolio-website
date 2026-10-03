@@ -1,0 +1,53 @@
+{
+  "id": 47,
+  "title": "The Pragmatic Hybrid: Unifying Flutter, FastAPI, and Supabase in a Single Codebase",
+  "excerpt": "Building full-stack applications often feels like juggling different paradigms. Here is how I unify Flutter, FastAPI, and Supabase into a cohesive, maintainable architecture.",
+  "date": "October 3, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "As a developer working across mobile, web, and backend, I often face the friction of combining entirely different ecosystems. Flutter excels at the UI layer, Supabase provides an excellent real-time database and authentication, and FastAPI handles the heavy Python-based logic, such as machine learning or vector searches. On paper, this stack is powerful, but in practice, keeping these three pillars in sync without creating a maintenance nightmare is a constant challenge."
+    },
+    {
+      "type": "h3",
+      "text": "The Challenge of Polyglot Backends"
+    },
+    {
+      "type": "p",
+      "text": "When building applications like Chanakya or Career Verse, the temptation is to let each layer evolve independently, leading to mismatched data structures and fragile API contracts. A Flutter developer expects a specific JSON shape, while a Python backend might return camelCase or snake_case depending on how Pydantic models are configured. This disconnect quickly turns debugging into a scavenger hunt."
+    },
+    {
+      "type": "h3",
+      "text": "Establishing a Single Source of Truth with TypeScript"
+    },
+    {
+      "type": "p",
+      "text": "To solve this, I lean heavily on TypeScript as the lingua franca. By defining shared interfaces and types, I can generate client SDKs or manual Dart equivalents that match my FastAPI Pydantic schemas exactly. This ensures that when I send a payload from a Flutter form, the backend understands it without any implicit type coercion or unexpected null safety errors."
+    },
+    {
+      "type": "h3",
+      "text": "Real-Time Data Flow with Supabase Realtime"
+    },
+    {
+      "type": "p",
+      "text": "Instead of forcing the Flutter client to poll the database for updates, I integrate Supabase Realtime directly into the architecture. When FastAPI processes a background task—like updating a legal prediction or generating career recommendations—it can trigger a database event. The Flutter client listens to these channels and updates the UI instantly, providing a seamless, reactive experience without adding latency to the API gateway."
+    },
+    {
+      "type": "h3",
+      "text": "Keeping Concerns Separated but Tightly Integrated"
+    },
+    {
+      "type": "p",
+      "text": "FastAPI should not be responsible for database schema management, nor should Supabase handle complex machine learning inference. By keeping FastAPI as the smart gateway for AI/ML computations (using libraries like scikit-learn or FAISS) and Supabase as the stateful source of truth, the system remains modular. The Flutter app only interacts with Supabase for CRUD operations and calls specific FastAPI endpoints for heavy computational tasks."
+    },
+    {
+      "type": "blockquote",
+      "text": "A well-architected hybrid system is not about using the newest tool, but about ensuring each tool does what it does best, with clear boundaries between them.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "By enforcing strict API contracts, leveraging real-time subscriptions, and keeping Python logic isolated to the FastAPI layer, I have been able to build scalable, high-performance applications that are surprisingly easy to maintain and extend over time."
+    }
+  ]
+}
