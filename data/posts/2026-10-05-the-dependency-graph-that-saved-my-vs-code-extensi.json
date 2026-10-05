@@ -1,0 +1,53 @@
+{
+  "id": 49,
+  "title": "The Dependency Graph That Saved My VS Code Extension",
+  "excerpt": "When CodeLoom Explorer started crawling under its own weight, understanding the actual dependency surface became the difference between a usable tool and an abandoned idea.",
+  "date": "October 5, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "CodeLoom Explorer began as a weekend experiment: parse a Dart or TypeScript project, spit out a knowledge graph, and call it done. Three months later, the extension was choking on medium-sized codebases. The graph would freeze the editor, the AST traversal took seconds per file, and worst of all, I had no idea which files were actually important to the user."
+    },
+    {
+      "type": "h3",
+      "text": "The Problem Was Not Parsing, It Was Relevance"
+    },
+    {
+      "type": "p",
+      "text": "Every AST parser sees everything. Every file, every import, every transitive dependency. But developers do not care about 90% of that noise. They care about the entry points, the hot reload boundaries, the files that change most often. Throwing the entire graph at them was the opposite of helpful."
+    },
+    {
+      "type": "blockquote",
+      "text": "A map that shows everything shows nothing.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "I spent a week rewriting the traversal to compute a real dependency graph first, then layer relevance scoring on top. Not just in-degree and out-degree, but change frequency from git history, file size as a proxy for complexity, and whether the file was imported by test files (a strong signal of public API surface)."
+    },
+    {
+      "type": "h3",
+      "text": "Building the Graph, Not Just Tracing Imports"
+    },
+    {
+      "type": "p",
+      "text": "The core insight was that a dependency graph is a directed acyclic graph, but not all edges are equal. An import from a barrel file is noise. An import that crosses package boundaries is signal. I ended up tagging each edge with metadata: static vs dynamic, same-package vs external, type-only vs runtime. The React Flow visualization then used edge thickness and color to communicate that metadata visually."
+    },
+    {
+      "type": "p",
+      "text": "The performance win was unexpected. By precomputing the graph once and caching it in a local SQLite store, subsequent loads went from 3.2 seconds to 180 milliseconds. The real win was user trust. When the graph loaded instantly and showed exactly the files they cared about, they stopped seeing CodeLoom as a novelty and started using it as a navigation tool."
+    },
+    {
+      "type": "h3",
+      "text": "What This Taught Me About Developer Tooling"
+    },
+    {
+      "type": "p",
+      "text": "Good developer tools do not just expose data, they curate it. A VS Code extension that dumps 500 nodes on the screen is not a tool, it is a firehose. The discipline of asking what the user actually needs, not what the parser can produce, is what separates tools people install from tools people uninstall."
+    },
+    {
+      "type": "p",
+      "text": "Today, CodeLoom Explorer still builds that dependency graph, but it also builds a relevance model on top of it. And every time I start a new project, whether it is a Flutter app or a FastAPI service, I ask the same question: what is the dependency graph that matters here, and what noise can I safely ignore?"
+    }
+  ]
+}
