@@ -1,0 +1,61 @@
+{
+  "id": 50,
+  "title": "Type Safety as a Safety Net: Practical Patterns for Large Flutter Projects",
+  "excerpt": "In large codebases, type safety isn't just a nice-to-have; it's the difference between catching bugs at compile time and chasing them in production.",
+  "date": "October 8, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "When a project grows beyond a few hundred files, the chaos of untyped data can become the biggest source of bugs. In my experience, a disciplined approach to typing turns that chaos into a reliable safety net."
+    },
+    {
+      "type": "h3",
+      "text": "The Hidden Cost of Implicit Any"
+    },
+    {
+      "type": "p",
+      "text": "Using `dynamic` or `var` without care hides the true shape of data. At runtime, a missing field can crash a screen, and the stack trace often points to a line far from the actual error. By making types explicit, the compiler becomes a first-line defender."
+    },
+    {
+      "type": "h3",
+      "text": "Leveraging Dart's Strong Typing"
+    },
+    {
+      "type": "p",
+      "text": "Dart offers sealed classes, pattern matching, and strict null safety. When modeling API responses, I define a `Freezed` data class that generates `copyWith`, `==`, and `hashCode`. This not only reduces boilerplate but also forces me to consider every possible state."
+    },
+    {
+      "type": "h3",
+      "text": "Sharing Types Between Flutter and Web"
+    },
+    {
+      "type": "p",
+      "text": "A common pitfall is duplicating model definitions across mobile and web. By placing shared models in a separate package and using `json_serializable`, both platforms consume the same generated code. The result is a single source of truth that stays in sync as the API evolves."
+    },
+    {
+      "type": "h3",
+      "text": "Practical Example: Integrating with Supabase"
+    },
+    {
+      "type": "p",
+      "text": "When I connect a Flutter app to Supabase, I generate TypeScript definitions from the database schema and then map them to Dart objects using `json_to_dart` tools. The generated classes enforce that every column is accounted for, and any schema change triggers a compile error until the client is updated."
+    },
+    {
+      "type": "blockquote",
+      "text": "A well-typed system is a self-documenting system.",
+      "author": "Unknown"
+    },
+    {
+      "type": "h3",
+      "text": "Testing and Refactoring with Confidence"
+    },
+    {
+      "type": "p",
+      "text": "With types in place, unit tests become simpler: I can mock interfaces and verify interactions without worrying about runtime shape. Refactoring a feature is less risky because the compiler will flag mismatched fields immediately."
+    },
+    {
+      "type": "p",
+      "text": "Investing in type safety early pays dividends as the codebase scales. It transforms the IDE into a guardrail and reduces the cognitive load on every developer who joins the project."
+    }
+  ]
+}
