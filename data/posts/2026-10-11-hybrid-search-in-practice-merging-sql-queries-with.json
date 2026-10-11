@@ -1,0 +1,56 @@
+{
+  "id": 52,
+  "title": "Hybrid Search in Practice: Merging SQL Queries with Vector Embeddings in Flutter and Supabase",
+  "excerpt": "Keyword search gets you the exact terms, but semantic search gets the intent. Combining both in a Flutter app using Supabase and vector embeddings is the only way to build truly intelligent search.",
+  "date": "October 11, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "As developers, we often face the classic search dilemma. If we use traditional SQL queries, we get exact matches but fail on synonyms, typos, or conceptual queries. If we jump entirely into semantic vector search, we lose the ability to filter by precise metadata like dates, categories, user IDs, or active flags. The solution lies in hybrid search—combining the structured precision of relational databases with the fuzzy, conceptual power of vector embeddings. In this post, I will share how I implemented hybrid search in a Flutter application backed by Supabase, bridging the gap between SQL and vector space."
+    },
+    {
+      "type": "h3",
+      "text": "The Architecture of Hybrid Search"
+    },
+    {
+      "type": "p",
+      "text": "To make hybrid search work efficiently, we need a database that can handle both structured data and vector representations. Supabase, with its pgvector extension, is a perfect candidate. It allows us to store embeddings directly alongside our regular columns in the same table. This means we do not need a separate vector database or a complex ETL pipeline; everything can live in one place, managed through our familiar Flutter schemas."
+    },
+    {
+      "type": "h3",
+      "text": "Querying Both Worlds in a Single Call"
+    },
+    {
+      "type": "p",
+      "text": "The real challenge is how we query this data. We can perform a SQL query with a cosine distance operator for semantic similarity, while simultaneously applying standard WHERE clauses for metadata filtering. In Flutter, we can call a Postgres function or a direct SQL query via Supabase's RPC or from selector. For example, we can filter documents by a user's ID and then sort them by their cosine distance to a query embedding."
+    },
+    {
+      "type": "p",
+      "text": "However, combining full-text search (keyword search) with vector search in Postgres requires a bit of SQL orchestration. We can use a tsvector for full-text search and embedding for semantic search, then re-rank the results using a Reciprocal Rank Fusion (RRF) or a simple weighted score. This ensures that a document matching both the exact keywords and the semantic intent gets boosted, while documents that only match one of them are ranked lower."
+    },
+    {
+      "type": "h3",
+      "text": "Generating and Managing Embeddings"
+    },
+    {
+      "type": "p",
+      "text": "On the Flutter side, generating embeddings for user queries in real-time is key. While running local models like ONNX or Core ML is possible for small models, leveraging a cloud function (like FastAPI or Supabase Edge Functions) to generate embeddings via Gemini or local models via Ollama is often more practical. Once the query embedding is generated, it is sent to the Supabase backend, where the vector search runs in milliseconds."
+    },
+    {
+      "type": "h3",
+      "text": "The Offline Challenge"
+    },
+    {
+      "type": "p",
+      "text": "What happens when the user is offline? This is where local-first architecture becomes critical. By caching the embeddings and metadata locally in Hive (as I did in Bolo AI and CodeLoom Explorer), we can perform local vector search using a lightweight library or pre-calculated indexes. While not as scalable as pgvector, it is sufficient for personal data and keeps the app fully functional without a network connection."
+    },
+    {
+      "type": "h3",
+      "text": "Practical Takeaways for Developers"
+    },
+    {
+      "type": "p",
+      "text": "If you are building an app with search capabilities, do not choose between keyword and semantic search. Use both. Start with a simple hybrid approach: use SQL for filtering and pgvector for semantic ranking. As your app grows, you can refine your ranking algorithms, but the foundational architecture of storing vectors alongside relational data in Supabase will scale beautifully."
+    }
+  ]
+}
