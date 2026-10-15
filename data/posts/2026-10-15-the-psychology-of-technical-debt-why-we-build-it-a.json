@@ -1,0 +1,37 @@
+{
+  "id": 53,
+  "title": "The Psychology of Technical Debt: Why We Build It and How to Pay It Down",
+  "excerpt": "Technical debt isn't always a mistake—sometimes it's a calculated trade-off, but without awareness it compounds into unmaintainable code.",
+  "date": "October 15, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "Every project I've shipped has had some form of technical debt. Sometimes it's a quick-and-dirty API response, other times it's a shortcut in state management. What matters isn't avoiding it entirely—it's recognizing when it happens and having a plan to address it."
+    },
+    {
+      "type": "h3",
+      "text": "Where Debt Hides in Plain Sight"
+    },
+    {
+      "type": "p",
+      "text": "I've found that debt often hides in plain sight: a utility function that grew beyond its original scope, a hardcoded configuration that should have been environment-driven, or a test suite that was trimmed to hit a deadline. The danger isn't the initial compromise; it's the illusion that the compromise is permanent."
+    },
+    {
+      "type": "h3",
+      "text": "A Framework for Paying It Down"
+    },
+    {
+      "type": "p",
+      "text": "Paying down technical debt requires more than refactoring for aesthetics. It requires context: understanding the business value of the code, the risk of leaving it as-is, and the cost of reworking it. I've used a simple framework: categorize debt as structural, cosmetic, or risk-related, then tackle it based on impact and effort."
+    },
+    {
+      "type": "p",
+      "text": "One practice that's worked well is allocating a small percentage of each sprint to refactoring high-impact areas. This keeps the codebase healthy without derailing feature delivery."
+    },
+    {
+      "type": "blockquote",
+      "text": "The only way to go fast is to keep the codebase clean enough to go fast.",
+      "author": "Kent Beck"
+    }
+  ]
+}
