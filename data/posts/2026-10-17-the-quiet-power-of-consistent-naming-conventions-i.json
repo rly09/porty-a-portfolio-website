@@ -1,0 +1,58 @@
+{
+  "id": 54,
+  "title": "The Quiet Power of Consistent Naming Conventions in Flutter and Python Codebases",
+  "excerpt": "Names are the only comments that survive refactoring, and they are also the most neglected part of our code quality efforts.",
+  "date": "October 17, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "I used to think naming was a minor concern, something to fix later when the code worked. Then I spent three days debugging a Flutter app where a variable called user meant five different things depending on which file you opened. The real bug was not in the logic, it was in the names."
+    },
+    {
+      "type": "h3",
+      "text": "The Naming Tax That Slows Teams Down"
+    },
+    {
+      "type": "p",
+      "text": "Inconsistent naming does not break builds, but it breaks mental models. In a Flutter project I worked on, one file used fetchUser, another used getUser, and a third used loadUserData. All three did the same thing. New contributors had to learn three synonyms for the same operation before they could read the code."
+    },
+    {
+      "type": "blockquote",
+      "text": "Good naming is not about being clever, it is about being predictable.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "The same problem appears in Python backends. I once saw a FastAPI service where the same database query was named get_item, retrieve_item, and fetch_single_record across different modules. Each name implied a slightly different contract, even though the code was identical."
+    },
+    {
+      "type": "h3",
+      "text": "Building a Naming Convention That Sticks"
+    },
+    {
+      "type": "p",
+      "text": "The trick is not to design the perfect convention in a meeting, but to start small and enforce it ruthlessly. In Flutter, I adopted a simple rule: verbs for functions (fetchUser), nouns for data models (UserProfile), and booleans prefixed with is or has (isLoading, hasError). For Python, I went with snake_case everywhere and required that every function name include the data source if it was a side effect (fetch_user_from_api, save_user_to_db)."
+    },
+    {
+      "type": "p",
+      "text": "Enforcement came through code review checklists and a simple script that flagged inconsistent patterns. It felt excessive at first, but within two weeks, the codebase became significantly easier to navigate."
+    },
+    {
+      "type": "h3",
+      "text": "The Compound Interest of Clear Names"
+    },
+    {
+      "type": "p",
+      "text": "Naming conventions pay dividends quietly. Code reviews become faster because reviewers do not have to translate between synonyms. Refactoring tools work better when names are consistent. And when you return to a project after six months, you can still read your own code without relearning the vocabulary."
+    },
+    {
+      "type": "p",
+      "text": "In my Supabase-backed Flutter apps, I now standardize around a pattern: fetch for remote reads, load for local cache reads, and save for writes. It is not glamorous, but it means I spend less time asking what a function does and more time building features."
+    },
+    {
+      "type": "blockquote",
+      "text": "A well-named variable is a gift to your future self, and to everyone else who has to read your code.",
+      "author": "Roshan Lal Yogi"
+    }
+  ]
+}
