@@ -1,0 +1,36 @@
+{
+  "id": 55,
+  "title": "From Abstract Syntax Trees to Interactive Graphs: The Engineering Behind CodeLoom Explorer",
+  "excerpt": "Visualizing code dependencies shouldn't compromise privacy or performance. Here is how I built a VS Code extension to parse codebases locally and render interactive 2D knowledge graphs using ASTs and React Flow.",
+  "date": "October 18, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "Visualizing code dependencies is one of the most difficult challenges in developer tooling. Most existing solutions rely on external servers, uploading your proprietary source code to the cloud, or generating static, unreadable dot files. When I built CodeLoom Explorer, the goal was simple: create a privacy-first VS Code extension that turns any codebase into an interactive, 2D knowledge graph directly inside the editor."
+    },
+    {
+      "type": "h3",
+      "text": "Parsing the Codebase Locally"
+    },
+    {
+      "type": "p",
+      "text": "The foundation of CodeLoom Explorer is its ability to read the file system and extract Abstract Syntax Trees (ASTs) without sending a single byte of source code to the cloud. Using VS Code's built-in language services and the TypeScript compiler API, the extension traverses the AST to identify imports, exports, and function calls. This local-first approach ensures complete code privacy, which is critical for proprietary codebases."
+    },
+    {
+      "type": "h3",
+      "text": "Bridging ASTs with React Flow"
+    },
+    {
+      "type": "p",
+      "text": "Once the dependency graph is constructed in memory, the challenge is rendering it smoothly. I used React Flow, a library for building interactive node-based UIs. The nodes represent files or components, and the edges represent dependencies. To handle large codebases, I implemented a custom clustering algorithm that groups unrelated files when the node count exceeds a threshold, keeping the graph performant and readable."
+    },
+    {
+      "type": "h3",
+      "text": "Handling Layout and Performance"
+    },
+    {
+      "type": "p",
+      "text": "A naive rendering of hundreds of nodes can cripple performance. I leveraged force-directed layouts optimized for web workers, ensuring the UI thread remains responsive. The graph also supports zooming, panning, and clicking on a node to highlight its specific dependencies, turning a complex web of imports into an intuitive navigational map."
+    }
+  ]
+}
