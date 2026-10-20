@@ -1,0 +1,53 @@
+{
+  "id": 56,
+  "title": "The Weight of a Thousand Milliseconds: Profiling Flutter App Launch Performance",
+  "excerpt": "App launch time is not just a metric—it is the first handshake between your code and the user. Here's how I learned to measure, understand, and shave seconds off cold starts.",
+  "date": "October 20, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "There is a moment, just before the first frame renders, where a user decides whether your app is fast or broken. I learned this the hard way while optimizing Bolo AI, a Flutter voice assistant that needed to feel instant even on low-end Android devices. The culprit wasn't the Gemini API calls or Supabase queries—it was the time between tapping the icon and seeing the splash screen."
+    },
+    {
+      "type": "h3",
+      "text": "Measuring What Matters: Cold vs Warm Starts"
+    },
+    {
+      "type": "p",
+      "text": "Flutter's performance tools give you two key metrics: the time from process start to first frame, and the time from first frame to interactive. The former is what users perceive as 'launch time.' I discovered that my app was spending nearly 800 milliseconds initializing HiveDb before showing any UI, even though the database wasn't needed until after onboarding."
+    },
+    {
+      "type": "blockquote",
+      "text": "Profile before you optimize. The bottleneck is rarely where you think it is.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "Using the DevTools Timeline, I traced every millisecond of the launch sequence. The pattern was clear: synchronous operations on the main thread during startup were blocking the render. Moving Hive initialization to a background isolate and deferring non-critical setup until after the first frame cut our median cold start from 1.2 seconds to 420 milliseconds."
+    },
+    {
+      "type": "h3",
+      "text": "Lazy Loading as a Philosophy"
+    },
+    {
+      "type": "p",
+      "text": "The real lesson wasn't about isolate—it was about questioning every import statement in main(). Does this service need to exist before the user sees anything? Can this configuration be loaded later? In CodeLoom Explorer, I applied the same principle: the AST parsing engine stays dormant until the user opens a file, keeping the extension's activation time under 50ms."
+    },
+    {
+      "type": "p",
+      "text": "For apps like Career Verse and ROT, which use Riverpod for state management, I found that pre-warming providers during the splash screen—without blocking the UI—created a smoother perceived performance. The key is to separate 'must have' from 'nice to have' during initialization."
+    },
+    {
+      "type": "h3",
+      "text": "The Discipline of Measuring Twice"
+    },
+    {
+      "type": "p",
+      "text": "I now treat every new dependency like a debt that must be justified. Each package added to pubspec.yaml gets a profile run on a Pixel 3a—the cheapest device I own that still represents my user base. If launch time increases by more than 50ms, I investigate whether the initialization can be deferred."
+    },
+    {
+      "type": "p",
+      "text": "The numbers don't lie, but they do demand honesty. A 200ms improvement might seem trivial until you realize it's the difference between a user waiting and a user leaving. In mobile development, those milliseconds compound into retention, and retention compounds into everything that matters."
+    }
+  ]
+}
