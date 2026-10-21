@@ -1,0 +1,53 @@
+{
+  "id": 57,
+  "title": "The Quiet Resilience of Incremental Refactoring in Flutter Codebases",
+  "excerpt": "Big rewrites fail because they ignore the human cost of change. Small, continuous refactors keep apps alive and teams sane.",
+  "date": "October 21, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "I once inherited a Flutter project where every screen had its own copy of the same network logic. Not abstracted, not shared — duplicated across ten files with minor variations. My first instinct was to build a universal service layer and replace everything at once. Two weeks later, I had a broken app, a frustrated team, and a git branch that nobody wanted to touch."
+    },
+    {
+      "type": "h3",
+      "text": "Why Big Refactors Break Teams"
+    },
+    {
+      "type": "p",
+      "text": "The problem with sweeping refactorings is that they conflate cleanup with progress. When you rewrite entire modules, you lose the ability to ship user-facing value. Worse, you introduce risk at scale — a single bug in a shared utility can cascade across the entire app. In projects like ROT and Mil, where Riverpod and BLoC manage complex state flows, an all-at-once rewrite would have destabilized features that were already working."
+    },
+    {
+      "type": "blockquote",
+      "text": "The best refactors are the ones users never notice.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "Instead of a rewrite, I started extracting one duplicated function at a time. I created a pull request for each small change, tagged it clearly, and merged it only after confirming no regressions. This approach, which I now apply across all my Flutter apps, keeps the codebase evolving without breaking momentum."
+    },
+    {
+      "type": "h3",
+      "text": "The Discipline of Single-File Refactors"
+    },
+    {
+      "type": "p",
+      "text": "Incremental refactoring forces you to think about boundaries. When I pulled shared Supabase queries out of individual screens in Career Verse, I had to decide what belonged in the data layer versus the presentation layer. That decision, made in isolation, became a template I reused in subsequent screens."
+    },
+    {
+      "type": "p",
+      "text": "This discipline also surfaces hidden dependencies. While cleaning up HiveDb usage in Bolo AI, I discovered that local caching logic was tightly coupled with UI state. Extracting them separately revealed opportunities to optimize offline behavior that a wholesale rewrite would have missed."
+    },
+    {
+      "type": "h3",
+      "text": "Measuring Progress Without Metrics"
+    },
+    {
+      "type": "p",
+      "text": "Code metrics like cyclomatic complexity or lines of code can track surface-level improvements, but they don't capture maintainability. The real signal comes from how quickly new features ship and how often bugs appear. In CodeLoom Explorer, where AST parsing and React Flow rendering already push complexity limits, small refactors kept the extension responsive while I added new graph traversal features."
+    },
+    {
+      "type": "p",
+      "text": "Today, I treat refactoring as a continuous practice rather than a project phase. Every time I touch a file, I ask: 'Can this be simpler?' The answer isn't always yes, but the question itself keeps the codebase lean and the team aligned."
+    }
+  ]
+}
