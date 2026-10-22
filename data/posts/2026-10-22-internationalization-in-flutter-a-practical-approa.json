@@ -1,0 +1,45 @@
+{
+  "id": 58,
+  "title": "Internationalization in Flutter: A Practical Approach with ARB Files",
+  "excerpt": "Learn how to set up ARB files, handle pluralization, and integrate localization into your Flutter app.",
+  "date": "October 22, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "In a world where users span continents, ignoring localization is a missed opportunity. Even a small app can benefit from supporting multiple languages, and Flutter provides a clean, built‑in mechanism through ARB files."
+    },
+    {
+      "type": "h3",
+      "text": "Structuring ARB Files"
+    },
+    {
+      "type": "p",
+      "text": "An ARB file is a JSON document with a specific set of keys. The file name follows the pattern app_en.arb for English, app_es.arb for Spanish, and so on. Inside, each entry maps a placeholder name to its translated string, optionally including placeholders for dynamic values."
+    },
+    {
+      "type": "h3",
+      "text": "Pluralization and ICU Formatting"
+    },
+    {
+      "type": "p",
+      "text": "Pluralization is where many developers stumble. Flutter's ARB format supports ICU message syntax, allowing you to define different forms for zero, one, many, and other quantities. For example, {count, plural, one {# item} other {# items}}."
+    },
+    {
+      "type": "h3",
+      "text": "Wiring Up the Localization Delegate"
+    },
+    {
+      "type": "p",
+      "text": "In main.dart, you must register a LocalizationDelegate that loads the appropriate ARB file based on the device locale. The default AppLocalizations delegate handles this automatically, but you can customize it to load translations from a remote source if needed."
+    },
+    {
+      "type": "blockquote",
+      "text": "The key to maintainable i18n is to keep translations separate from UI code.",
+      "author": "Unknown"
+    },
+    {
+      "type": "p",
+      "text": "By following these patterns, you can build a Flutter app that feels native to speakers of any language, without sacrificing code clarity or performance."
+    }
+  ]
+}
