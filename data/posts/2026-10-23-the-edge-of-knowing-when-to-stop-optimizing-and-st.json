@@ -1,0 +1,53 @@
+{
+  "id": 59,
+  "title": "The Edge of Knowing: When to Stop Optimizing and Start Shipping",
+  "excerpt": "There is a moment in every project where the pursuit of perfection becomes the enemy of progress. Learning to recognize that edge can save months of wasted effort.",
+  "date": "October 23, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "I have spent countless hours in the optimization loop, convinced that one more tweak would make the difference between a good product and a great one. It rarely does. The real breakthrough comes from knowing when to stop polishing and start shipping."
+    },
+    {
+      "type": "h3",
+      "text": "The Siren Song of Perfection"
+    },
+    {
+      "type": "p",
+      "text": "In my work on Bolo AI, a voice assistant built with Flutter and Supabase, I found myself deep in the weeds of latency optimization. Every millisecond shaved off the Gemini API response felt meaningful, but after a certain point, the gains became marginal. Users did not notice the difference between 800ms and 600ms response times. What they did notice was that the feature was missing entirely because I was too busy optimizing a different one."
+    },
+    {
+      "type": "blockquote",
+      "text": "Perfect is the enemy of shipped. The best code is the code that solves a problem, not the code that solves it perfectly.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "This lesson carried over to CodeLoom Explorer, my VS Code extension for visualizing codebase dependencies. I almost abandoned the project because the initial graph rendering was slow on large repositories. Instead of rewriting the entire rendering engine, I shipped with a loading spinner and a note that performance would improve in future versions. The extension gained dozens of users before I ever touched the rendering logic again."
+    },
+    {
+      "type": "h3",
+      "text": "The 80/20 Rule in Practice"
+    },
+    {
+      "type": "p",
+      "text": "I now apply a simple heuristic: if a change affects less than 1% of users or improves a metric by less than 1%, it is not worth delaying the release. This has saved me from rabbit holes in everything from state management refactors in ROT to search indexing strategies in Chalchitra."
+    },
+    {
+      "type": "p",
+      "text": "Of course, there are exceptions. Security vulnerabilities, data integrity issues, and core performance bottlenecks must be addressed. But these are rare. Most optimization efforts fall into the category of premature optimization, where the cost of the change exceeds its benefit."
+    },
+    {
+      "type": "h3",
+      "text": "Shipping as a Discipline"
+    },
+    {
+      "type": "p",
+      "text": "Shipping is not the opposite of quality. It is a discipline that forces you to make trade-offs explicit. When I built the cross-platform movie discovery app Chalchitra, I chose to ship with a basic recommendation algorithm rather than waiting for a more sophisticated model. The feedback from real users informed the next iteration far better than any amount of offline testing could have."
+    },
+    {
+      "type": "p",
+      "text": "This approach has become central to how I work. I ship early, ship often, and iterate based on real-world usage. The edge of knowing is recognizing that your first version will be imperfect, and that is exactly where it should be."
+    }
+  ]
+}
