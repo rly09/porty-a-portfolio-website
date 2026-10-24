@@ -1,0 +1,61 @@
+{
+  "id": 60,
+  "title": "The Shape of Feedback: Designing APIs That Learn From Their Users",
+  "excerpt": "The best APIs don't just expose functionality—they adapt to how developers actually use them, turning every call into a learning opportunity.",
+  "date": "October 24, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "Most API design guides focus on consistency, clarity, and correctness. Those matter, but they miss something quieter yet more powerful: the feedback loop between an API and its callers. When I built the backend for Chanakya, our legal intelligence platform, I learned that the shape of your API responses isn't just about what you send—it's about what you learn from how those responses get used."
+    },
+    {
+      "type": "h3",
+      "text": "Why APIs Should Listen, Not Just Respond"
+    },
+    {
+      "type": "p",
+      "text": "Chanakya predicts legal outcomes using historical case data. Early versions returned a single predicted result with a confidence score. But legal professionals don't just want one answer—they want to explore alternatives, understand edge cases, and validate assumptions. The API was technically correct but practically useless because it didn't reflect how people actually reason about uncertainty."
+    },
+    {
+      "type": "blockquote",
+      "text": "An API that doesn't account for how it's actually consumed is like a conversation where one person does all the talking.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "We redesigned the response to include not just the top prediction but a ranked list of plausible outcomes, each with contributing factors. This wasn't about adding more data—it was about adding more dimensions to the feedback we could gather. When users started selecting the second or third prediction more often, we knew our model needed recalibration. When they ignored certain factors entirely, we simplified them out."
+    },
+    {
+      "type": "h3",
+      "text": "The Feedback Loop in Code"
+    },
+    {
+      "type": "p",
+      "text": "In FastAPI, this looked like returning structured metadata alongside predictions:"
+    },
+    {
+      "type": "p",
+      "text": "Every response included a 'usage_context' field capturing the query parameters, the user's selection history, and the time taken to make a decision. This wasn't invasive tracking—it was designing the API to be introspective. The data flowed into a lightweight analytics pipeline that fed back into model retraining."
+    },
+    {
+      "type": "p",
+      "text": "The real insight came when we noticed that certain query patterns consistently led to low-confidence predictions. Instead of treating these as failures, we used them as signals to expand our training data in those areas. The API wasn't just serving predictions—it was guiding its own improvement."
+    },
+    {
+      "type": "h3",
+      "text": "Designing for Evolution, Not Perfection"
+    },
+    {
+      "type": "p",
+      "text": "SyncMind, my Chrome extension that transfers context between AI assistants, taught me a similar lesson from the other side of the API. Every time a user switched from Claude to ChatGPT, the extension captured how the context was transformed, what was preserved, and what was lost. These weren't bugs to fix—they were patterns to learn from."
+    },
+    {
+      "type": "p",
+      "text": "The most valuable APIs I've built share a common trait: they're designed to evolve based on usage, not just specification. They return not just what the caller asked for, but what the caller's behavior suggests they might need next. This requires a shift in mindset—from treating APIs as static contracts to treating them as dynamic interfaces that grow alongside their users."
+    },
+    {
+      "type": "p",
+      "text": "It also means accepting that your initial design will be wrong in interesting ways. The goal isn't to predict every use case upfront, but to build an API that makes it easy to discover and adapt to the ones you missed. When your API learns from its users, every call becomes a collaboration rather than a transaction."
+    }
+  ]
+}
