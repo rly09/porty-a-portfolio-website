@@ -1,0 +1,66 @@
+{
+  "id": 61,
+  "title": "The Architecture of Cross-Model Embeddings in Mobile Apps",
+  "excerpt": "Running multiple embedding models on-device forces hard choices between accuracy, size, and latency. Here is how I learned to make peace with compromise.",
+  "date": "October 26, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "Most tutorials will tell you that embeddings are the secret sauce of modern AI. They will not tell you that running multiple embedding models on a mobile device is an exercise in constraint management. When I started working on Bolo AI and CodeLoom Explorer, I assumed that once I had a decent model serving text embeddings, I was done. The reality was that I needed three different embedding strategies living side by side, each with conflicting requirements."
+    },
+    {
+      "type": "h3",
+      "text": "The Three Faces of an Embedding"
+    },
+    {
+      "type": "p",
+      "text": "In Bolo AI, I needed embeddings for voice command understanding. The queries were short, noisy, and often contained domain-specific terminology that general-purpose models missed. In CodeLoom Explorer, I needed embeddings for code snippets and file paths, which meant dealing with a completely different distribution of tokens. And in SyncMind, I was transferring context between LLMs, which meant I needed embeddings that could align representations across very different model architectures."
+    },
+    {
+      "type": "blockquote",
+      "text": "An embedding is never just a vector. It is a contract between your data and your downstream task.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "The first mistake I made was trying to find a single model that could handle all three. I spent weeks fine-tuning a sentence-transformers model on a combined dataset of voice commands, code, and conversational text. The result was a model that was mediocre at everything and excellent at nothing. The latency was unacceptable, and the model size ballooned to over 400MB, which was a non-starter for mobile."
+    },
+    {
+      "type": "h3",
+      "text": "The Decision to Specialize"
+    },
+    {
+      "type": "p",
+      "text": "I eventually accepted that I needed a multi-model embedding architecture. For Bolo AI, I used a lightweight model optimized for short text classification, running entirely on-device using TensorFlow Lite. For CodeLoom Explorer, I used a code-specific embedding model that I ran through a Python backend exposed via FastAPI, since the model was too large to run on mobile and the code analysis was already server-side. For SyncMind, I relied on the embedding endpoints provided by the LLM APIs themselves, since I was already making API calls and the cost of an additional embedding call was negligible compared to the generation cost."
+    },
+    {
+      "type": "p",
+      "text": "This specialization came with its own complexity. I now had three different embedding pipelines, each with its own preprocessing, caching strategy, and failure modes. But the trade-off was worth it. The on-device model in Bolo AI responded in under 50ms, the code embeddings in CodeLoom Explorer were accurate enough that my knowledge graph was usable, and SyncMind could align contexts across models with surprising fidelity."
+    },
+    {
+      "type": "h3",
+      "text": "The Glue: Normalization and Caching"
+    },
+    {
+      "type": "p",
+      "text": "The key insight was that the embedding vectors themselves were useless without a normalization layer. Different models produce vectors of different dimensions and scales. I built a simple normalization service that mapped all embeddings into a common 128-dimensional space using a learned projection. This projection was trained on a small, curated dataset of paired examples — the same sentence embedded by different models, the same code snippet embedded by different pipelines."
+    },
+    {
+      "type": "p",
+      "text": "Caching was equally important. In CodeLoom Explorer, I cached embeddings in HiveDb alongside the AST data, keyed by file path and last-modified timestamp. In Bolo AI, I cached the on-device embeddings in memory with an LRU eviction policy. In SyncMind, I cached the API embeddings in Supabase with a TTL, since the cost of re-computation was directly tied to API spend."
+    },
+    {
+      "type": "blockquote",
+      "text": "The best embedding architecture is the one that makes your caching strategy invisible to the user.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "Looking back, the multi-model approach was the right call, but it required me to think about embeddings not as a feature but as an infrastructure problem. Each model had its own API, its own failure modes, its own cost structure. The architecture that emerged was less about machine learning and more about distributed systems — about managing state, handling failures, and making trade-offs that prioritized user experience over model purity."
+    },
+    {
+      "type": "p",
+      "text": "If I were starting over today, I would design the embedding layer as a pluggable service from day one. I would define a clear interface for what an embedding provider needs to do — embed text, normalize vectors, handle caching — and then implement that interface for each use case. The temptation to unify everything into a single model is strong, but it is usually a trap. Sometimes the best architecture is the one that accepts fragmentation and builds good glue around it."
+    }
+  ]
+}
