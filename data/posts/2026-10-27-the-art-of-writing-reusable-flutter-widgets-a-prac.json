@@ -1,0 +1,53 @@
+{
+  "id": 62,
+  "title": "The Art of Writing Reusable Flutter Widgets: A Practical Guide",
+  "excerpt": "Creating widgets that scale across features and teams requires more than just extracting a Column. In this post, I share concrete patterns for building composable, testable, and maintainable Flutter widgets.",
+  "date": "October 27, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "In any non-trivial Flutter application, the temptation to copy-paste a widget across screens is strong. The first refactor usually extracts that widget into a shared file, but without a clear contract, the shared widget becomes a dumping ground for unrelated properties."
+    },
+    {
+      "type": "h3",
+      "text": "Define a Minimal Interface"
+    },
+    {
+      "type": "p",
+      "text": "Treat each reusable widget as a component with a well-defined set of inputs. In Flutter, this translates to a small set of required parameters and optional callbacks. Avoid exposing internal state; instead, expose callbacks like onPress, onLongPress, or onChange."
+    },
+    {
+      "type": "blockquote",
+      "text": "A widget that tries to be everything for every screen will eventually become a god widget.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "h3",
+      "text": "Prefer Composition Over Inheritance"
+    },
+    {
+      "type": "p",
+      "text": "Instead of building a monolithic widget, compose smaller pieces. For example, a list item can be built from a Container, a Column, and a Row, each with its own responsibilities. This not only improves readability but also allows swapping implementations without touching the parent."
+    },
+    {
+      "type": "h3",
+      "text": "Leverage Theme and BuildContext"
+    },
+    {
+      "type": "p",
+      "text": "Hardcoding colors, paddings, and font sizes inside a reusable widget makes it brittle when the design system evolves. By relying on Theme.of(context) or defining a custom ThemeExtension, the widget adapts to changes without modification."
+    },
+    {
+      "type": "h3",
+      "text": "Testing and Documentation"
+    },
+    {
+      "type": "p",
+      "text": "Write widget tests that cover the primary interactions. A widget that renders correctly with default props and responds to callbacks is easier to maintain. Document the expected behavior in the widget's doc comment, including any side effects."
+    },
+    {
+      "type": "p",
+      "text": "When a widget is designed with these principles in mind, it becomes a building block that can be assembled into complex UIs without causing a maintenance nightmare. The initial investment in a clean interface pays dividends as the codebase grows."
+    }
+  ]
+}
