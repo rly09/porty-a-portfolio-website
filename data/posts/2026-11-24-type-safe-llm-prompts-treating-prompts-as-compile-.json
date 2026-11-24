@@ -1,0 +1,37 @@
+{
+  "id": 65,
+  "title": "Type-Safe LLM Prompts: Treating Prompts as Compile-Time Code in a Flutter + FastAPI App",
+  "excerpt": "How treating LLM prompts as typed, versioned code improved reliability and debuggability in a cross-platform application.",
+  "date": "November 24, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "Every time I integrated an LLM into a mobile app, the same pattern emerged: prompts lived as strings buried in UI logic, became impossible to search, and broke silently when the model updated. I decided to treat prompts like any other piece of source code."
+    },
+    {
+      "type": "h3",
+      "text": "Prompts as Source Code"
+    },
+    {
+      "type": "p",
+      "text": "I moved all prompt templates into dedicated Dart files with string constants and FastAPI Pydantic models that validate the payload before it hits the model. This means the prompt text is checked at compile time, not discovered at runtime."
+    },
+    {
+      "type": "h3",
+      "text": "Type Guarding Prompt Variables"
+    },
+    {
+      "type": "p",
+      "text": "Instead of interpolating user input directly into a prompt string, I defined a small typed model for the variables the prompt expects. In Flutter, a simple class holds the values; in FastAPI, a Pydantic model deserializes the incoming JSON. The model then injects the values into the prompt template in a single, verified step."
+    },
+    {
+      "type": "blockquote",
+      "text": "Treat your prompts like API contracts — they’ll change, and you’ll be glad you versioned them.",
+      "author": "Roshan Lal Yogi"
+    },
+    {
+      "type": "p",
+      "text": "The payoff was immediate: fewer production bugs, faster onboarding for new team members, and the ability to run static analysis on prompt logic just like any other Dart or Python code. If you’re integrating LLMs into a Flutter app today, I’d strongly recommend starting with a typed prompt layer before you add any model-specific code."
+    }
+  ]
+}
