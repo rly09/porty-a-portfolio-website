@@ -1,0 +1,50 @@
+{
+  "id": 66,
+  "title": "The Engineer's Guide to Meaningful Commit Messages: Beyond git log Noise",
+  "excerpt": "Clear commit history is maintainable code's first line of defense.",
+  "date": "November 25, 2026",
+  "content": [
+    {
+      "type": "p",
+      "text": "Every project I've worked on has taught me one constant: a git log filled with 'fix typos' or 'wip' entries becomes a liability, not a history."
+    },
+    {
+      "type": "h3",
+      "text": "Why Commit Messages Matter More Than We Admit"
+    },
+    {
+      "type": "p",
+      "text": "When a team of five pushes daily without conventions, debugging production incidents turns into archaeological dig. You find yourself grepping for 'maybe fix this' or 'attempt 2' across branches."
+    },
+    {
+      "type": "blockquote",
+      "text": "If you have to explain what the code does in a commit message, the code probably needs refactoring.",
+      "author": "Kent Beck"
+    },
+    {
+      "type": "p",
+      "text": "In a Flutter + FastAPI workflow, where state changes ripple across platforms, a well-structured commit becomes the single source of truth for what changed and why."
+    },
+    {
+      "type": "h3",
+      "text": "A Practical Convention That Sticks"
+    },
+    {
+      "type": "p",
+      "text": "I've settled on a simple format: type(scope): short summary, followed by a blank line and a wrapped description. Types like feat, fix, docs, refactor, test keep the log scannable. For mobile work, I often add platform tags like (flutter|web|supabase) in the scope."
+    },
+    {
+      "type": "p",
+      "text": "Automation helps. A simple Husky pre-commit hook or GitHub Actions check that validates the pattern reduces friction. The goal isn't enforcement for its own sake — it's making the git log a useful debugging tool, not a chore."
+    },
+    {
+      "type": "blockquote",
+      "text": "A git history worth reading is a git history worth writing.",
+      "author": "Unknown"
+    },
+    {
+      "type": "p",
+      "text": "If you're tired of hunting through noise to find why a feature broke, start with the commit. The discipline pays off far beyond the terminal."
+    }
+  ]
+}
